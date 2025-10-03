@@ -53,9 +53,9 @@ const CardNav: React.FC<CardNavProps> = ({
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     if (isMobile) {
-      const contentEl = navEl.querySelector(
+      const contentEl = navEl.querySelector<HTMLElement>(
         ".card-nav-content",
-      )! as HTMLElement;
+      )!;
       if (contentEl) {
         const wasVisible = contentEl.style.visibility;
         const wasPointerEvents = contentEl.style.pointerEvents;
