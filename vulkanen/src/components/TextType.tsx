@@ -115,7 +115,8 @@ const TextType = ({
           }
 
           if (onSentenceComplete) {
-            onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
+            const currentSentence = textArray[currentTextIndex] ?? '';
+            onSentenceComplete(currentSentence, currentTextIndex);
           }
 
           setCurrentTextIndex(prev => (prev + 1) % textArray.length);
