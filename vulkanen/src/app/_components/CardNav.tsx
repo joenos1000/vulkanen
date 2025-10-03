@@ -3,6 +3,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { GoArrowUpRight } from "react-icons/go";
+import Image from "next/image";
 
 type CardNavLink = {
   label: string;
@@ -54,7 +55,7 @@ const CardNav: React.FC<CardNavProps> = ({
     if (isMobile) {
       const contentEl = navEl.querySelector(
         ".card-nav-content",
-      ) as HTMLElement;
+      )! as HTMLElement;
       if (contentEl) {
         const wasVisible = contentEl.style.visibility;
         const wasPointerEvents = contentEl.style.pointerEvents;
@@ -67,7 +68,7 @@ const CardNav: React.FC<CardNavProps> = ({
         contentEl.style.height = "auto";
 
         // force reflow
-        contentEl.offsetHeight;
+        void contentEl.offsetHeight;
 
         const topBar = 60;
         const padding = 16;
@@ -116,6 +117,7 @@ const CardNav: React.FC<CardNavProps> = ({
       tl?.kill();
       tlRef.current = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ease, items]);
 
   useLayoutEffect(() => {
@@ -143,6 +145,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isExpanded]);
 
   const toggleMenu = () => {
@@ -181,7 +184,7 @@ const CardNav: React.FC<CardNavProps> = ({
             role="button"
             aria-label={isExpanded ? "Luk menu" : "Åbn menu"}
             tabIndex={0}
-            style={{ color: menuColor || "#000" }}
+            style={{ color: menuColor ?? "#000" }}
           >
             <div
               className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${
@@ -196,7 +199,7 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
 
           <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
-            <img src={logo} alt={logoAlt} className="logo h-[46px] md:h-[52px] w-auto object-contain" />
+            <Image src={logo} alt={logoAlt} className="logo h-[46px] md:h-[52px] w-auto object-contain" width={100} height={52} priority />
           </div>
 
           <button
