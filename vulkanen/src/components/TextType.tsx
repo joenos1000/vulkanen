@@ -121,7 +121,9 @@ const TextType = ({
 
           setCurrentTextIndex(prev => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
-          timeout = setTimeout(() => {}, pauseDuration);
+          timeout = setTimeout(() => {
+            // Wait for pause duration before starting next word
+          }, pauseDuration);
         } else {
           timeout = setTimeout(() => {
             setDisplayedText(prev => prev.slice(0, -1));
@@ -165,7 +167,8 @@ const TextType = ({
     isVisible,
     reverseMode,
     variableSpeed,
-    onSentenceComplete
+    onSentenceComplete,
+    getRandomSpeed
   ]);
 
   const currentText = textArray[currentTextIndex] ?? '';
