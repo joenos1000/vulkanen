@@ -8,7 +8,7 @@ import CardNav, { type CardNavItem } from "./_components/CardNav";
 
 export const metadata: Metadata = {
   title: "Vulkanen Mors",
-  description: "Et nyt kapitel for Ørding, Læs mere om Vulkanen Mors",
+  description: "Et nyt kapitel for Ørding - Læs mere om Vulkanen Mors",
   icons: [{ rel: "icon", url: "/VULKANEN-ICON-LOGO.png" }],
 };
 
