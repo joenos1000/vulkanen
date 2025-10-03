@@ -103,7 +103,7 @@ const TextType = ({
 
     let timeout: NodeJS.Timeout;
 
-    const currentText = textArray[currentTextIndex];
+    const currentText = textArray[currentTextIndex] ?? '';
     const processedText = reverseMode ? currentText.split('').reverse().join('') : currentText;
 
     const executeTypingAnimation = () => {
