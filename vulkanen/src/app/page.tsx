@@ -114,7 +114,7 @@ export default function Home() {
                   <li>Fællesspisning og madoplevelser</li>
                   <li>Kaffe-brygning på højeste niveau</li>
                   <li>Snapselaug og bagekonkurrencer</li>
-                  <li>Support til "Ørding Foodtrucks" via vores professionelle køkken</li>
+                  <li>Support til &quot;Ørding Foodtrucks&quot; via vores professionelle køkken</li>
                 </ul>
               </div>
 
