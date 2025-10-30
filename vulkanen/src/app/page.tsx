@@ -18,8 +18,8 @@ export default function Home() {
 
           {/* Three Images Layout */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-12">
-            {/* Left: Værk */}
-            <div className="flex flex-col items-center space-y-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            {/* Left: Værk - Hidden on mobile */}
+            <div className="hidden md:flex flex-col items-center space-y-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="relative w-48 h-48 md:w-56 md:h-56 transition-transform hover:scale-105 duration-300">
                 <Image
                   src="/værk-hvid.png"
@@ -47,8 +47,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Velo Mors */}
-            <div className="flex flex-col items-center space-y-4 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            {/* Right: Velo Mors - Hidden on mobile */}
+            <div className="hidden md:flex flex-col items-center space-y-4 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
               <div className="relative w-48 h-48 md:w-56 md:h-56 transition-transform hover:scale-105 duration-300">
                 <Image
                   src="/velo-mors-hvid.png"
@@ -179,7 +179,7 @@ export default function Home() {
       <Section
         id="vaerksted"
         title="VÆRKsted"
-        subtitle="Et kreativt fristed hvor forskellighed bliver til styrke"
+        subtitle="Et fristed for skabende mennesker - Især børn og unge"
         className="bg-gray-50"
       >
         {/* Kerneidéer */}
