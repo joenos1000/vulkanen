@@ -207,26 +207,60 @@ export default function Home() {
       <Section
         id="vaerdier"
         title="Værdier"
-        subtitle="Hvad står Vulkanen for?"
+        subtitle="Uanset hvilken retning vi bevæger os i, er der enighed om nogle centrale værdier og hensyn​"
         className="bg-gray-50"
       >
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Fællesskab</h3>
+        {/* Introductory Text */}
+        <div className="bg-white rounded-lg p-8 shadow-sm mb-8">
+          <p className="text-lg text-gray-700 leading-relaxed mb-4">
+            Området skal være et levende møde- og lærested, der rummer mennesker på tværs af alder og baggrund.​
+          </p>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Tilhørighed og samskabelse er fundamentet for både aktiviteter, drift og stemning.​
+          </p>
+        </div>
+
+        {/* Values Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Tilgængelighed</h3>
             <p className="text-gray-700">
-              Vi skaber rum for møder og samarbejde på tværs af interesser og baggrunde.
+              Aktiviteter og udstyr skal være familievenlige og imødekommende – både fysisk og socialt.​
             </p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Kreativitet</h3>
+          
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Bevarelse af udearealer</h3>
             <p className="text-gray-700">
-              Vi værner om det skabende og giver plads til kunstnerisk udfoldelse.
+              Legepladsen og de grønne områder omkring skolen skal bevares og være en integreret del af visionen – som rum for leg, læring og samvær.​
             </p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Bæredygtighed</h3>
+          
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Bevarelse af aktiviteter</h3>
             <p className="text-gray-700">
-              Vi tænker langsigtet og ansvarligt i vores projekter og aktiviteter.
+              Skolen rummer i dag mange foreninger og aktiviteter, disse skal bevares og få den plads og rum der er brug for, så vi sikrer et ligeså godt tilbud til byens børn og voksne.​
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Nærhed til naturen</h3>
+            <p className="text-gray-700">
+              Den særlige placering tæt på fjord, skov og strand skal udnyttes aktivt til oplevelser og som identitetsskabende element.​
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Lokal forankring</h3>
+            <p className="text-gray-700">
+              Visionerne skal udvikles i samarbejde og bygger på ønsket om at bevare liv og aktivitet i Ørding og omegn.​
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Bæredygtighed – også økonomisk</h3>
+            <p className="text-gray-700">
+              Bæredygtighed sikres gennem så vidt mulig genbrug, rene råvarer og et princip om gældsfrihed.​
             </p>
           </div>
         </div>
