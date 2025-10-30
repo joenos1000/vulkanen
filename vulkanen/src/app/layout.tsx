@@ -26,8 +26,8 @@ export default function RootLayout({
       bgColor: "#BB3822",
       textColor: "#ffffff",
       links: [
-        { label: "Vision", href: "/#vision", ariaLabel: "Gå til Vision" },
-        { label: "Om os", href: "/#Om", ariaLabel: "Gå til Hold" },
+        { label: "Status", href: "/#status", ariaLabel: "Gå til Status" },
+        { label: "Finansieringsplan", href: "/#finansieringsplan", ariaLabel: "Gå til Finansieringsplan" },
       ],
     },
     {
@@ -35,17 +35,17 @@ export default function RootLayout({
       bgColor: "#F25F26",
       textColor: "#ffffff",
       links: [
-        { label: "Begivenheder", href: "/#events", ariaLabel: "Gå til Begivenheder" },
-        { label: "Workshops", href: "/#workshops", ariaLabel: "Gå til Workshops" },
+        { label: "Et VÆRKsted", href: "/#vaerksted", ariaLabel: "Gå til Et VÆRKsted" },
+        { label: "VELO Mors", href: "/#velo-mors", ariaLabel: "Gå til VELO Mors" },
       ],
     },
     {
-      label: "Støt os",
-      bgColor: "#C6331D",
+      label: "Støt Vulkanen",
+      bgColor: "#ff904b",
       textColor: "#ffffff",
       links: [
-        { label: "Donér", href: "/#donate", ariaLabel: "Gå til Donér" },
-        { label: "Kontakt", href: "/#contact", ariaLabel: "Gå til Kontakt" },
+        { label: "Andele i Vulkanen", href: "/#andele", ariaLabel: "Gå til Andele i Vulkanen" },
+        { label: "Kontakt bestyrelsen", href: "/#kontakt-bestyrelsen", ariaLabel: "Gå til Kontakt bestyrelsen" },
       ],
     },
   ];
@@ -54,12 +54,12 @@ export default function RootLayout({
       <body>
         <TRPCReactProvider>
           <CardNav
-            logo="/VULKANEN-ICON-LOGO.png"
+            logo="/vulkan-logo-hvid.png"
             logoAlt="Vulkanen"
             items={navItems}
             baseColor="#ffffff"
             menuColor="#111827"
-            buttonBgColor="#111827"
+            buttonBgColor="#ff904b"
             buttonTextColor="#ffffff"
           />
           {children}
