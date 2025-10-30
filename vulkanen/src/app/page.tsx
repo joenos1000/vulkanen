@@ -75,7 +75,7 @@ export default function Home() {
               href="#kontakt"
               className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
-              Tegn andel
+              Tegn anpart
             </a>
           </div>
         </div>
@@ -148,10 +148,16 @@ export default function Home() {
         </div>
 
         {/* Call to Action */}
-        <div className="bg-[#ff904b] text-white rounded-lg p-8 text-center shadow-lg mt-8">
-          <p className="text-xl md:text-2xl font-semibold">
+        <div className="text-center mt-8">
+          <p className="text-xl md:text-2xl text-gray-700 mb-6">
             Kontakt Bestyrelsen – og tegn anparter. Så støtter du finansieringsplanen
           </p>
+          <a
+            href="#kontakt"
+            className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+          >
+            Tegn anpart
+          </a>
         </div>
       </Section>
 
@@ -262,16 +268,88 @@ export default function Home() {
       <Section
         id="velo-mors"
         title="Velo Mors"
-        subtitle="Centrum for Cykeluniverset på Mors"
+        subtitle="Et cykelunivers i bevægelse"
         className="bg-white"
       >
-        <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            Velo Mors bliver et centrum for cykelentusiaster på Mors.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            Her vil der være plads til cykelværksted, events og fællesskab omkring cykelkulturen.
-          </p>
+        {/* Kerneidéer */}
+        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
+          <ul className="space-y-3 text-gray-700 text-lg">
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Cyklen som adgang til naturen og lokalt fællesskab</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Aktiviteter for alle niveauer og aldre</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Bevægelse som socialt og sanseligt anker</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Mål and Finansieringspotentiale - Side by Side */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          {/* Mål */}
+          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-green-500">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Mål</h3>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              At skabe et fysisk og socialt rum, hvor mennesker samles om bevægelse og naturoplevelser – og hvor det handler om at være sammen på vej, ikke hurtigst.
+            </p>
+          </div>
+
+          {/* Finansieringspotentiale */}
+          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Finansieringspotentiale</h3>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Støtte fra fonde der prioriterer friluftsliv, fællesskab og lokaludvikling (fx Nordea-fonden).
+            </p>
+          </div>
+        </div>
+
+        {/* Konkrete elementer og synergier */}
+        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-purple-500">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Konkrete elementer og synergier</h3>
+          <ul className="space-y-3 text-gray-700 text-lg">
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Udlejning af mange typer cykler (elcykler, gravelbikes, børnecykler m.m.)</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Guidede ture og temaruter (fx "Cykel + Fjordtur", "Cykel + Bålmad")</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Tekniktræning, unicycling, cykelværksted og opbevaring</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Lejrskolepakker med kombination af cykling, læring og naturformidling</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Overnatningsmuligheder for større grupper</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Samarbejde med Ørding Købmandsgaard om forplejning</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Fællesspisning, events og festivaler – fx "Tour de Kultur"</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Trafiklegeplads til børn</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Mulighed for udvikling af VELO-brand og merchandise</span>
+            </li>
+          </ul>
         </div>
       </Section>
 
@@ -342,7 +420,7 @@ export default function Home() {
       <Section
         id="kontakt"
         title="Kontakt Bestyrelsen"
-        subtitle="Konktakt os for at tegne andele"
+        subtitle="Konktakt os for at tegne anpart"
         className="bg-white"
       >
         <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
