@@ -173,16 +173,88 @@ export default function Home() {
       <Section
         id="vaerksted"
         title="VÆRKsted"
-        subtitle="Fristed for skabelse"
+        subtitle="Et kreativt fristed hvor forskellighed bliver til styrke"
         className="bg-gray-50"
       >
-        <div className="bg-white rounded-lg p-8 shadow-sm">
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            VÆRKsted er et kreativt fristed hvor kunstnere, håndværkere og skabende sjæle kan mødes og arbejde.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            Her vil der være plads til workshops, udstillinger og fælles projekter.
-          </p>
+        {/* Kerneidéer */}
+        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
+          <ul className="space-y-3 text-gray-700 text-lg">
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Plads til dem der falder udenfor traditionelle læringsrum</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Fokus på proces frem for præstation</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Kreativitet som vej til styrke, tilhørighed og udvikling</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Mål and Finansieringspotentiale - Side by Side */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          {/* Mål */}
+          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-green-500">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Mål</h3>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              At skabe et sted, hvor kreativitet og forskellighed bliver styrker – og hvor relationer og identitet kan vokse i takt med de kunstneriske udtryk.
+            </p>
+          </div>
+
+          {/* Finansieringspotentiale */}
+          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Finansieringspotentiale</h3>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Fonde der støtter social inklusion, læring og kreativ udvikling (fx Spar Nord, Egmont, Nordea-fonden).
+            </p>
+          </div>
+        </div>
+
+        {/* Konkrete elementer og synergier */}
+        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-purple-500">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Konkrete elementer og synergier</h3>
+          <ul className="space-y-3 text-gray-700 text-lg">
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Kreative værksteder: keramik, tekstil, billedkunst, musik, digitalt design</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Øvelokaler og teatermiljø</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Rå og upolerede rammer til eksperimenterende kunst og formidling</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Uderum med bålplads, kunsthaver, sansestier og lydkunst i naturen</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Workshops og kreative lejrskoler (fx "Farv med planter", "Lyde fra skoven")</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Udstillinger, events og festivaler – kreative i naturen</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Udlejning af rum og samarbejde med kunstnere, skoler og sociale aktører</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Overnatningsmuligheder for større grupper</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-purple-500 mr-3 mt-1">•</span>
+              <span>Samarbejde med Ørding Købmandsgaard om forplejning</span>
+            </li>
+          </ul>
         </div>
       </Section>
 
