@@ -9,7 +9,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { id: "finansieringsplan", number: 1, label: "Finansierings" },
+  { id: "finansieringsplan", number: 1, label: "Finansieringsplan" },
   { id: "status", number: 2, label: "Status" },
   { id: "vaerksted", number: 3, label: "VÆRKsted" },
   { id: "velo-mors", number: 4, label: "Velo Mors" },

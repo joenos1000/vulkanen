@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Section from "./_components/Section";
 import Navigation from "./_components/Navigation";
+import Footer from "./_components/Footer";
 
 export default function Home() {
   return (
@@ -114,6 +115,10 @@ export default function Home() {
             <li className="flex items-start">
               <span className="text-[#ff904b] mr-3 mt-1">•</span>
               <span>Foreningen/selskabet står selv for drift i 2 år, evt. med understøttelse.</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Vi tegner andele af 2500kr/styk</span>
             </li>
           </ul>
         </div>
@@ -423,6 +428,11 @@ export default function Home() {
         subtitle="Konktakt os for at tegne anpart"
         className="bg-white"
       >
+        <div className="bg-gray-50 rounded-lg p-8 shadow-sm mb-6">
+          <p className="text-lg text-gray-700 leading-relaxed text-center font-semibold">
+            Vi tegner andele af 2500kr/styk
+          </p>
+        </div>
         <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
           </p>
@@ -433,6 +443,9 @@ export default function Home() {
           </div>
         </div>
       </Section>
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }
