@@ -1,13 +1,14 @@
 interface SectionProps {
+  id?: string;
   title: string;
   subtitle?: string;
   children: React.ReactNode;
   className?: string;
 }
 
-export default function Section({ title, subtitle, children, className = "" }: SectionProps) {
+export default function Section({ id, title, subtitle, children, className = "" }: SectionProps) {
   return (
-    <section className={`py-20 px-4 ${className}`}>
+    <section id={id} className={`py-20 px-4 ${className}`}>
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="mb-12 text-center">

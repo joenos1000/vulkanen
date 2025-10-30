@@ -1,20 +1,23 @@
 import Image from "next/image";
 import Section from "./_components/Section";
+import Navigation from "./_components/Navigation";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
+      {/* Navigation */}
+      <Navigation />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
         {/* Content Container */}
-        <div className="relative z-10 container mx-auto px-4 py-20">
+        <div className="relative z-10 container mx-auto px-4 py-12">
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 text-center mb-16 tracking-tight mt-24">
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 text-center mb-12 tracking-tight">
             Vulkanen På Mors
           </h1>
 
           {/* Three Images Layout */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-16">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-12">
             {/* Left: Værk */}
             <div className="flex flex-col items-center space-y-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="relative w-48 h-48 md:w-56 md:h-56 transition-transform hover:scale-105 duration-300">
@@ -63,9 +66,17 @@ export default function Home() {
 
           {/* Call to Action Text */}
           <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 max-w-4xl mx-auto leading-relaxed">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 max-w-4xl mx-auto leading-relaxed mb-8">
               Vi er p.t. i gang med at tegne andele i Vulkanen - Din opbakning er vigtig​
             </h2>
+            
+            {/* Tegne Andel Button */}
+            <a
+              href="#kontakt"
+              className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+              Tegn andel
+            </a>
           </div>
         </div>
 
@@ -87,6 +98,7 @@ export default function Home() {
 
       {/* Finansieringsplan Section */}
       <Section
+        id="finansieringsplan"
         title="Finansieringsplan"
         subtitle="Det bliver centralt at sikre en overgangsperiode på op til 2 år mens visionen formes og realiseres."
         className="bg-gray-50"
@@ -140,6 +152,101 @@ export default function Home() {
           <p className="text-xl md:text-2xl font-semibold">
             Kontakt Bestyrelsen – og tegn anparter. Så støtter du finansieringsplanen
           </p>
+        </div>
+      </Section>
+
+      {/* Status Section */}
+      <Section
+        id="status"
+        title="Status"
+        subtitle="Hvor er vi i processen?"
+        className="bg-white"
+      >
+        <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Vi er i gang med at samle opbakning og tegne andele. Følg med her for opdateringer om projektets fremskridt.
+          </p>
+        </div>
+      </Section>
+
+      {/* VÆRKsted Section */}
+      <Section
+        id="vaerksted"
+        title="VÆRKsted"
+        subtitle="Fristed for skabelse"
+        className="bg-gray-50"
+      >
+        <div className="bg-white rounded-lg p-8 shadow-sm">
+          <p className="text-lg text-gray-700 leading-relaxed mb-4">
+            VÆRKsted er et kreativt fristed hvor kunstnere, håndværkere og skabende sjæle kan mødes og arbejde.
+          </p>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Her vil der være plads til workshops, udstillinger og fælles projekter.
+          </p>
+        </div>
+      </Section>
+
+      {/* Velo Mors Section */}
+      <Section
+        id="velo-mors"
+        title="Velo Mors"
+        subtitle="Centrum for Cykeluniverset på Mors"
+        className="bg-white"
+      >
+        <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
+          <p className="text-lg text-gray-700 leading-relaxed mb-4">
+            Velo Mors bliver et centrum for cykelentusiaster på Mors.
+          </p>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Her vil der være plads til cykelværksted, events og fællesskab omkring cykelkulturen.
+          </p>
+        </div>
+      </Section>
+
+      {/* Værdier Section */}
+      <Section
+        id="vaerdier"
+        title="Værdier"
+        subtitle="Hvad står Vulkanen for?"
+        className="bg-gray-50"
+      >
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-lg p-6 shadow-sm">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Fællesskab</h3>
+            <p className="text-gray-700">
+              Vi skaber rum for møder og samarbejde på tværs af interesser og baggrunde.
+            </p>
+          </div>
+          <div className="bg-white rounded-lg p-6 shadow-sm">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Kreativitet</h3>
+            <p className="text-gray-700">
+              Vi værner om det skabende og giver plads til kunstnerisk udfoldelse.
+            </p>
+          </div>
+          <div className="bg-white rounded-lg p-6 shadow-sm">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Bæredygtighed</h3>
+            <p className="text-gray-700">
+              Vi tænker langsigtet og ansvarligt i vores projekter og aktiviteter.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Kontakt Bestyrelsen Section */}
+      <Section
+        id="kontakt"
+        title="Kontakt Bestyrelsen"
+        subtitle="Konktakt os for at tegne andele"
+        className="bg-white"
+      >
+        <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
+          <p className="text-lg text-gray-700 leading-relaxed mb-4">
+          </p>
+          <div className="bg-[#ff904b] text-white rounded-lg p-6 text-center shadow-lg">
+            <p className="text-xl font-semibold">
+              Kontakt information kommer snart
+            </p>
+          </div>
         </div>
       </Section>
     </main>
