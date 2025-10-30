@@ -247,7 +247,7 @@ export default function Home() {
             </li>
             <li className="flex items-start">
               <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Workshops og kreative lejrskoler (fx "Farv med planter", "Lyde fra skoven")</span>
+              <span>Workshops og kreative lejrskoler (fx Farv med planter, Lyde fra skoven)</span>
             </li>
             <li className="flex items-start">
               <span className="text-purple-500 mr-3 mt-1">•</span>
@@ -324,7 +324,7 @@ export default function Home() {
             </li>
             <li className="flex items-start">
               <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Guidede ture og temaruter (fx "Cykel + Fjordtur", "Cykel + Bålmad")</span>
+              <span>Guidede ture og temaruter (fx Cykel + Fjordtur, Cykel + Bålmad)</span>
             </li>
             <li className="flex items-start">
               <span className="text-purple-500 mr-3 mt-1">•</span>
@@ -344,7 +344,7 @@ export default function Home() {
             </li>
             <li className="flex items-start">
               <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Fællesspisning, events og festivaler – fx "Tour de Kultur"</span>
+              <span>Fællesspisning, events og festivaler – fx Tour de Kultur</span>
             </li>
             <li className="flex items-start">
               <span className="text-purple-500 mr-3 mt-1">•</span>
