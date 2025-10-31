@@ -11,14 +11,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* About Section */}
           <div className="space-y-4">
-            <div className="relative w-32 h-32">
+            <Link href="/" aria-label="Vulkanen logo" className="inline-block">
               <Image
-                src="/vulkan-logo-hvid.png"
+                src="/vulkanen-favicon.png"
                 alt="Vulkanen logo"
-                fill
-                className="object-contain brightness-0 invert"
+                width={128}
+                height={128}
+                className="object-contain"
+                priority
               />
-            </div>
+            </Link>
             <p className="text-sm leading-relaxed">
               Vulkanen På Mors - Et nyt kapitel for Ørding. Vi skaber et levende møde- og lærested for kreativitet, bevægelse og fællesskab.
             </p>

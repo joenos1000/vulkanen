@@ -62,7 +62,7 @@ export default function Navigation() {
         className="bg-gray-100/95 backdrop-blur-sm rounded-lg shadow-lg p-4 hover:bg-[#ff904b] hover:text-white transition-all duration-300 flex items-center gap-3 group"
       >
         <span className="text-2xl font-bold group-hover:text-white transition-colors duration-300">
-          {activeItem?.number || "☰"}
+          {activeItem?.number ?? "☰"}
         </span>
         <span className="text-lg font-medium group-hover:text-white transition-colors duration-300">
           {isOpen ? "✕" : "Menu"}
@@ -98,7 +98,7 @@ export default function Navigation() {
                     scrollToSection(item.id);
                     setIsOpen(false);
                   }}
-                  className="flex items-center w-full text-left transition-all duration-200 group"
+                  className="flex items-center w-full text-left transition-all duration-200 group hover:scale-105"
                   style={{
                     gap: isHovered ? '1rem' : '0.5rem'
                   }}
