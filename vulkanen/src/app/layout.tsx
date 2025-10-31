@@ -8,7 +8,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 export const metadata: Metadata = {
   title: "Vulkanen Mors",
   description: "Et nyt kapitel for Ørding - Læs mere om Vulkanen Mors",
-  icons: [{ rel: "icon", url: "/VULKANEN-ICON-LOGO.png" }],
+  icons: [{ rel: "icon", url: "/vulkanen-favicon.png" }],
 };
 
 const geist = Geist({

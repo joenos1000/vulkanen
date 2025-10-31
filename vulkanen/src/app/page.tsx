@@ -1,9 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Section from "./_components/Section";
 import Navigation from "./_components/Navigation";
 import Footer from "./_components/Footer";
 
 export default function Home() {
+  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('kontakt');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white">
       {/* Navigation */}
@@ -74,7 +84,8 @@ export default function Home() {
             {/* Tegne Andel Button */}
             <a
               href="#kontakt"
-              className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              onClick={scrollToContact}
+              className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
             >
               Tegn anpart
             </a>
@@ -159,7 +170,8 @@ export default function Home() {
           </p>
           <a
             href="#kontakt"
-            className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            onClick={scrollToContact}
+            className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
           >
             Tegn anpart
           </a>
