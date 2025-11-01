@@ -51,20 +51,16 @@ export default function Navigation() {
   const activeItem = navItems.find((item) => item.id === activeSection);
 
   return (
-    <nav
-      className="fixed top-8 right-8 z-50 hidden lg:block"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <nav className="fixed top-8 right-8 z-50 hidden lg:block">
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-gray-100/95 backdrop-blur-sm rounded-lg shadow-lg p-4 hover:bg-[#ff904b] hover:text-white transition-all duration-300 flex items-center gap-3 group"
+        className="bg-gray-100/95 backdrop-blur-sm rounded-lg shadow-lg px-3 py-2 hover:bg-[#ff904b] hover:text-white transition-all duration-300 flex items-center gap-2 group"
       >
-        <span className="text-2xl font-bold group-hover:text-white transition-colors duration-300">
+        <span className="text-xl font-bold group-hover:text-white transition-colors duration-300">
           {activeItem?.number ?? "☰"}
         </span>
-        <span className="text-lg font-medium group-hover:text-white transition-colors duration-300">
+        <span className="text-base font-medium group-hover:text-white transition-colors duration-300">
           {isOpen ? "✕" : "Menu"}
         </span>
       </button>
@@ -72,10 +68,12 @@ export default function Navigation() {
       {/* Dropdown Menu */}
       {isOpen && (
         <div
-          className="mt-2 bg-gray-100/95 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden origin-top-right"
+          className="absolute top-full mt-2 right-0 bg-gray-100/95 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden origin-top-right"
           style={{
             animation: 'slideDown 0.2s ease-out'
           }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <div
             className="transition-all duration-300"
