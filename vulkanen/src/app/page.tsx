@@ -20,6 +20,35 @@ export default function Home() {
       <Navigation />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
+        {/* AKTUELT Event Card - Desktop only: positioned on the left, vertically centered */}
+        <div className="hidden md:block absolute left-4 md:left-12 top-1/2 -translate-y-1/2 z-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <a
+            href="/dokumenter/fællesspisning-24-nov.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block group"
+          >
+            {/* Event Details Card with Circle */}
+            <div className="relative bg-white rounded-lg shadow-xl p-6 max-w-xs border-l-4 border-[#ff904b] transform transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
+              {/* Green Animated Circle - Top Right Corner */}
+              <div className="absolute -top-2 -right-2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse-enhanced"></div>
+              
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+                Fællesspisning den 24/11
+              </h3>
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-3">
+                Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. Vulkanen er tændt!
+              </p>
+              <div className="text-[#ff904b] font-semibold text-base flex items-center">
+                <span>Læs mere</span>
+                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
         {/* Content Container */}
         <div className="relative z-10 container mx-auto px-4 py-12">
           {/* Main Title */}
@@ -75,10 +104,39 @@ export default function Home() {
             </div>
           </div>
 
+          {/* AKTUELT Event Card - Mobile only: Between logo and CTA text */}
+          <div className="flex justify-center mb-8 animate-fade-in-up md:hidden" style={{ animationDelay: '0.7s' }}>
+            <a
+              href="/dokumenter/fællesspisning-24-nov.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group w-full max-w-md mx-4"
+            >
+              {/* Event Details Card with Circle */}
+              <div className="relative bg-white rounded-lg shadow-xl p-6 border-l-4 border-[#ff904b] transform transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
+                {/* Green Animated Circle - Top Right Corner */}
+                <div className="absolute -top-2 -right-2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse-enhanced"></div>
+                
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+                  Fællesspisning den 24/11
+                </h3>
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-3">
+                  Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. Vulkanen er tændt!
+                </p>
+                <div className="text-[#ff904b] font-semibold text-base flex items-center">
+                  <span>Læs mere</span>
+                  <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </div>
+
           {/* Call to Action Text */}
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 max-w-4xl mx-auto leading-relaxed mb-8">
-              Vi er p.t. i gang med at tegne andele i Vulkanen - Din opbakning er vigtig​
+              Vi er i gang med at tegne andele i Vulkanen - Din opbakning er vigtig​
             </h2>
             
             {/* Tegne Andel Button */}
