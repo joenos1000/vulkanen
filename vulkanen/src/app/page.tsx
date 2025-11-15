@@ -506,10 +506,15 @@ export default function Home() {
         <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
           </p>
-          <div className="bg-[#ff904b] text-white rounded-lg p-6 text-center shadow-lg">
-            <p className="text-xl font-semibold">
-          Søren Lyndrup Tlf: 30 70 38 09 - Søren Nygaard Tlf: 40 76 78 87
-            </p>
+          <div className="bg-[#ff904b] text-white rounded-lg p-6 text-center shadow-lg space-y-4">
+            <div className="text-xl font-semibold">
+              <span className="block"><strong>Søren Lyndrup</strong></span>
+              <span>Tlf: <a href="tel:30703809" className="underline text-white font-normal">30 70 38 09</a></span>
+            </div>
+            <div className="text-xl font-semibold">
+              <span className="block"><strong>Søren Nygaard</strong></span>
+              <span>Tlf: <a href="tel:40767887" className="underline text-white font-normal">40 76 78 87</a></span>
+            </div>
           </div>
         </div>
       </Section>
