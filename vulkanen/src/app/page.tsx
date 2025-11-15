@@ -508,10 +508,7 @@ export default function Home() {
           </p>
           <div className="bg-[#ff904b] text-white rounded-lg p-6 text-center shadow-lg">
             <p className="text-xl font-semibold">
-              Søren Lyndrup - Tlf: 30 70 38 09
-              <br>
-                Søren Nygaard - Tlf: 40 76 78 87
-              </br>
+          Kommer snart
             </p>
           </div>
         </div>
