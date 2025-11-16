@@ -1,8 +1,27 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+
+interface NavItem {
+  id: string;
+  number: number;
+  label: string;
+}
+
+const navItems: NavItem[] = [
+  { id: "finansieringsplan", number: 1, label: "Finansieringsplan" },
+  { id: "status", number: 2, label: "Status" },
+  { id: "vaerksted", number: 3, label: "VÆRKsted" },
+  { id: "velo-mors", number: 4, label: "Velo Mors" },
+  { id: "vaerdier", number: 5, label: "Værdier" },
+  { id: "kontakt", number: 6, label: "Kontakt Bestyrelsen" },
+];
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
   const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const element = document.getElementById('kontakt');
@@ -11,19 +30,17 @@ export default function Header() {
     }
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
-      <div className="container mx-auto px-6 py-3 flex items-center justify-between">
-        <div className="relative w-32 h-12">
-          <Image
-            src="/vulkan-logo-hvid.png"
-            alt="Vulkanen logo"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
-        
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Left: Tegn anpart button */}
         <a
           href="#kontakt"
           onClick={scrollToContact}
@@ -31,7 +48,115 @@ export default function Header() {
         >
           Tegn anpart
         </a>
+        
+        {/* Center: Logo */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="relative w-20 h-20">
+            <Image
+              src="/vulkanen-favicon.png"
+              alt="Vulkanen logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Right: Menu button */}
+        <div className="relative">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="bg-gray-100 rounded-lg shadow-lg px-4 py-2 hover:bg-[#ff904b] hover:text-white transition-all duration-300 flex items-center gap-2 group"
+          >
+            <span className="text-xl font-bold">☰</span>
+            <span className="text-base font-medium">Menu</span>
+          </button>
+
+          {/* Dropdown Menu */}
+          {isMenuOpen && (
+            <div
+              className="absolute top-full mt-2 right-0 bg-gray-100/95 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden origin-top-right"
+              style={{
+                animation: 'slideDown 0.2s ease-out'
+              }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <div
+                className="transition-all duration-300"
+                style={{
+                  padding: isHovered ? '1.5rem' : '1rem'
+                }}
+              >
+                <div
+                  className="transition-all duration-300"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: isHovered ? '1rem' : '0.5rem'
+                  }}
+                >
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        scrollToSection(item.id);
+                        setIsMenuOpen(false);
+                      }}
+                      className="flex items-center w-full text-left transition-all duration-200 group hover:scale-105"
+                      style={{
+                        gap: isHovered ? '1rem' : '0.5rem'
+                      }}
+                    >
+                      {/* Number */}
+                      <span
+                        className="font-bold text-gray-400 group-hover:text-[#ff904b] transition-all duration-200"
+                        style={{
+                          fontSize: isHovered ? '1.5rem' : '1.25rem'
+                        }}
+                      >
+                        {item.number}
+                      </span>
+
+                      {/* Line */}
+                      <div
+                        className="h-0.5 flex-1 bg-gray-400 group-hover:bg-[#ff904b] transition-all duration-200"
+                        style={{
+                          minWidth: isHovered ? '128px' : '80px',
+                          maxWidth: isHovered ? '128px' : '80px'
+                        }}
+                      />
+
+                      {/* Label */}
+                      <span
+                        className="font-medium whitespace-nowrap text-gray-600 group-hover:text-[#ff904b] transition-all duration-200"
+                        style={{
+                          fontSize: isHovered ? '1.125rem' : '1rem'
+                        }}
+                      >
+                        {item.label}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
+
+      <style jsx>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </header>
   );
 }

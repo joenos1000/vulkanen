@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Section from "./_components/Section";
-import Navigation from "./_components/Navigation";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
@@ -19,8 +18,6 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       {/* Header */}
       <Header />
-      {/* Navigation */}
-      <Navigation />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden pt-24">
         {/* AKTUELT Event Card - Desktop only: positioned on the left, vertically centered */}
