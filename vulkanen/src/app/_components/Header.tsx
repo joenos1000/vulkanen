@@ -66,7 +66,7 @@ export default function Header() {
         <div className="relative">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="bg-gray-100 rounded-lg shadow-lg px-4 py-2 hover:bg-[#ff904b] hover:text-white transition-all duration-300 flex items-center gap-2 group"
+            className="bg-gray-100 rounded-lg px-4 py-2 hover:bg-[#ff904b] hover:text-white transition-all duration-300 flex items-center gap-2 group"
           >
             <span className="text-xl font-bold">☰</span>
             <span className="text-base font-medium">Menu</span>
