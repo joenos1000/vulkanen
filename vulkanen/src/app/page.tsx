@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Section from "./_components/Section";
 import Navigation from "./_components/Navigation";
+import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
 export default function Home() {
@@ -16,10 +17,12 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
+      {/* Header */}
+      <Header />
       {/* Navigation */}
       <Navigation />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden pt-16">
         {/* AKTUELT Event Card - Desktop only: positioned on the left, vertically centered */}
         <div className="hidden md:block absolute left-4 md:left-12 top-1/2 -translate-y-1/2 z-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <a
@@ -52,57 +55,9 @@ export default function Home() {
         {/* Content Container */}
         <div className="relative z-10 container mx-auto px-4 py-12">
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 text-center mb-12 tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 text-center mb-24 tracking-tight">
             Vulkanen På Mors
           </h1>
-
-          {/* Three Images Layout */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-12">
-            {/* Left: Værk - Hidden on mobile */}
-            <div className="hidden md:flex flex-col items-center space-y-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="relative w-48 h-48 md:w-56 md:h-56 transition-transform hover:scale-105 duration-300">
-                <Image
-                  src="/værk-hvid.png"
-                  alt="Værk logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-              <p className="black text-lg md:text-xl font-medium text-center max-w-xs">
-                Fristed for skabelse
-              </p>
-            </div>
-
-            {/* Center: Vulkan Logo (Larger) */}
-            <div className="flex flex-col items-center space-y-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <div className="relative w-64 h-64 md:w-80 md:h-80 transition-transform hover:scale-105 duration-300">
-                <Image
-                  src="/vulkan-logo-hvid.png"
-                  alt="Vulkanen logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </div>
-
-            {/* Right: Velo Mors - Hidden on mobile */}
-            <div className="hidden md:flex flex-col items-center space-y-4 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              <div className="relative w-48 h-48 md:w-56 md:h-56 transition-transform hover:scale-105 duration-300">
-                <Image
-                  src="/velo-mors-hvid.png"
-                  alt="Velo Mors logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-              <p className="black text-lg md:text-xl font-medium text-center max-w-xs">
-                Centrum for Cykeluniverset på Mors
-              </p>
-            </div>
-          </div>
 
           {/* AKTUELT Event Card - Mobile only: Between logo and CTA text */}
           <div className="flex justify-center mb-8 animate-fade-in-up md:hidden" style={{ animationDelay: '0.7s' }}>
@@ -257,6 +212,18 @@ export default function Home() {
         subtitle="Et fristed for skabende mennesker - Især børn og unge"
         className="bg-gray-50"
       >
+        {/* Værk Image */}
+        <div className="flex justify-center mb-8">
+          <div className="relative w-48 h-48 md:w-64 md:h-64">
+            <Image
+              src="/værk-hvid.png"
+              alt="Værk logo"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+
         {/* Kerneidéer */}
         <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
@@ -346,6 +313,18 @@ export default function Home() {
         subtitle="Et cykelunivers i bevægelse"
         className="bg-white"
       >
+        {/* Velo Mors Image */}
+        <div className="flex justify-center mb-8">
+          <div className="relative w-48 h-48 md:w-64 md:h-64">
+            <Image
+              src="/velo-mors-hvid.png"
+              alt="Velo Mors logo"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+
         {/* Kerneidéer */}
         <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
