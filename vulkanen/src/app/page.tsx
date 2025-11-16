@@ -20,8 +20,8 @@ export default function Home() {
       <Header />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden pt-24">
-        {/* AKTUELT Event Card - Desktop only: positioned on the left, vertically centered */}
-        <div className="hidden md:block absolute left-4 md:left-12 top-1/2 -translate-y-1/2 z-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        {/* AKTUELT Event Card - Desktop only: positioned on the left, lower third */}
+        <div className="hidden md:block absolute left-4 md:left-12 bottom-32 z-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <a
             href="/dokumenter/fællesspisning-24-nov.pdf"
             target="_blank"
