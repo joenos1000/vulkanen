@@ -51,7 +51,7 @@ export default function Navigation() {
   const activeItem = navItems.find((item) => item.id === activeSection);
 
   return (
-    <nav className="fixed top-8 right-8 z-50 hidden lg:block">
+    <nav className="fixed top-24 right-8 z-50 hidden lg:block">
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}

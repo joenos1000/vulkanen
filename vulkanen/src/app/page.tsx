@@ -22,7 +22,7 @@ export default function Home() {
       {/* Navigation */}
       <Navigation />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden pt-16">
+      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden pt-24">
         {/* AKTUELT Event Card - Desktop only: positioned on the left, vertically centered */}
         <div className="hidden md:block absolute left-4 md:left-12 top-1/2 -translate-y-1/2 z-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <a
