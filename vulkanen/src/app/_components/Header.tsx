@@ -37,6 +37,10 @@ export default function Header() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -50,7 +54,10 @@ export default function Header() {
         </a>
         
         {/* Center: Logo */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+          onClick={scrollToTop}
+        >
           <div className="relative w-20 h-20">
             <Image
               src="/vulkanen-favicon.png"
