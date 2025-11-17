@@ -14,6 +14,14 @@ export default function Home() {
     }
   };
 
+  const scrollToFaellesspisning = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('faellesspisning');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white">
       {/* Header */}
@@ -23,9 +31,8 @@ export default function Home() {
         {/* AKTUELT Event Card - Desktop only: positioned on the left, same level as hero image */}
         <div className="hidden md:block absolute left-4 md:left-12 top-1/2 -translate-y-1/2 z-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <a
-            href="/dokumenter/fællesspisning-24-nov.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#faellesspisning"
+            onClick={scrollToFaellesspisning}
             className="block group"
           >
             {/* Event Details Card with Circle */}
@@ -88,9 +95,8 @@ export default function Home() {
         {/* AKTUELT Event Card - Mobile only */}
         <div className="block md:hidden mx-auto px-4 py-4">
           <a
-            href="/dokumenter/fællesspisning-24-nov.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#faellesspisning"
+            onClick={scrollToFaellesspisning}
             className="block group"
           >
             {/* Event Details Card with Circle */}
@@ -230,7 +236,7 @@ export default function Home() {
         </div>
 
         {/* Fællesspisning Event */}
-        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
+        <div id="faellesspisning" className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
           {/* NEW Badge */}
           <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
             NYT
@@ -238,7 +244,7 @@ export default function Home() {
           
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Fællesspisning den 24/11</h3>
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. Vulkanen er tændt!
+            Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. - <strong>Vulkanen er tændt!</strong>
           </p>
           <div className="flex justify-end">
             <a
