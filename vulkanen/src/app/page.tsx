@@ -53,7 +53,7 @@ export default function Home() {
         <div className="relative z-10 container mx-auto px-4 py-4">
           {/* Main Title */}
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 text-center mb-8 tracking-tight">
-            Vulkanen På Mors
+            Vulkanen Mors
           </h1>
 
           {/* Bestyrelse Image */}
@@ -219,7 +219,7 @@ export default function Home() {
             <span className="text-sm text-gray-500 whitespace-nowrap ml-4">15. november 2024</span>
           </div>
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            Vulkanen slår dørene op på vid gab og byder alle velkommen. Styregruppen for etableringen ser frem til stiftende generalforsamling for "Vulkanen Mors" mandag den 24/11. Kom og være med, begynder med fællesspisning kl. 17.30. Her er plads til alle ideer og forslag der kan skabe liv og fællesskab i disse fantastiske rammer der nu er i borgernes hænder.
+            Vulkanen slår dørene op på vid gab og byder alle velkommen. Styregruppen for etableringen ser frem til stiftende generalforsamling for Vulkanen Mors mandag den 24/11. Kom og være med, begynder med fællesspisning kl. 17.30. Her er plads til alle ideer og forslag der kan skabe liv og fællesskab i disse fantastiske rammer der nu er i borgernes hænder.
           </p>
           <p className="text-lg text-gray-700 leading-relaxed italic">
             Vi ses
@@ -273,22 +273,24 @@ export default function Home() {
         subtitle="Et fristed for skabende mennesker - Især børn og unge"
         className="bg-gray-50"
       >
-        {/* Værk Image */}
-        <div className="flex justify-center mb-8">
-          <div className="relative w-48 h-48 md:w-64 md:h-64">
-            <Image
-              src="/værk-hvid.png"
-              alt="Værk logo"
-              fill
-              className="object-contain"
-            />
+        {/* Kerneidéer and Image - Side by Side */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          {/* Værk Image - First on mobile, second on desktop */}
+          <div className="flex items-center justify-center md:order-2">
+            <div className="relative w-full h-64 md:h-full">
+              <Image
+                src="/værk-hvid.png"
+                alt="Værk logo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Kerneidéer */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
-          <ul className="space-y-3 text-gray-700 text-lg">
+          {/* Kerneidéer - Second on mobile, first on desktop */}
+          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] md:order-1">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
+            <ul className="space-y-3 text-gray-700 text-lg">
             <li className="flex items-start">
               <span className="text-[#ff904b] mr-3 mt-1">•</span>
               <span>Plads til dem der falder udenfor traditionelle læringsrum</span>
@@ -301,7 +303,8 @@ export default function Home() {
               <span className="text-[#ff904b] mr-3 mt-1">•</span>
               <span>Kreativitet som vej til styrke, tilhørighed og udvikling</span>
             </li>
-          </ul>
+            </ul>
+          </div>
         </div>
 
         {/* Mål and Finansieringspotentiale - Side by Side */}
@@ -374,22 +377,24 @@ export default function Home() {
         subtitle="Et cykelunivers i bevægelse"
         className="bg-white"
       >
-        {/* Velo Mors Image */}
-        <div className="flex justify-center mb-8">
-          <div className="relative w-48 h-48 md:w-64 md:h-64">
-            <Image
-              src="/velo-mors-hvid.png"
-              alt="Velo Mors logo"
-              fill
-              className="object-contain"
-            />
+        {/* Kerneidéer and Image - Side by Side */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          {/* Velo Mors Image - First on mobile, second on desktop */}
+          <div className="flex items-center justify-center md:order-2">
+            <div className="relative w-full h-64 md:h-full">
+              <Image
+                src="/velo-mors-hvid.png"
+                alt="Velo Mors logo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Kerneidéer */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
-          <ul className="space-y-3 text-gray-700 text-lg">
+          {/* Kerneidéer - Second on mobile, first on desktop */}
+          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] md:order-1">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
+            <ul className="space-y-3 text-gray-700 text-lg">
             <li className="flex items-start">
               <span className="text-[#ff904b] mr-3 mt-1">•</span>
               <span>Cyklen som adgang til naturen og lokalt fællesskab</span>
@@ -402,7 +407,8 @@ export default function Home() {
               <span className="text-[#ff904b] mr-3 mt-1">•</span>
               <span>Bevægelse som socialt og sanseligt anker</span>
             </li>
-          </ul>
+            </ul>
+          </div>
         </div>
 
         {/* Mål and Finansieringspotentiale - Side by Side */}
