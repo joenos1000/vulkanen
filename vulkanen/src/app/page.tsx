@@ -202,7 +202,7 @@ export default function Home() {
 
       {/* Status & Nyheder Section */}
       <Section
-        id="status"
+        id="status og nyheder"
         title="Status & Nyheder"
         subtitle="Hvor er vi i processen?"
         className="bg-white"
@@ -211,12 +211,12 @@ export default function Home() {
         <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
           {/* NEW Badge */}
           <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
-            NYHED
+            NYT
           </div>
           
           <div className="flex items-start justify-between mb-4">
             <h3 className="text-2xl font-bold text-gray-900">Velkommen til Vulkanen!</h3>
-            <span className="text-sm text-gray-500 whitespace-nowrap ml-4">15. november 2025</span>
+            <span className="text-sm text-gray-500 whitespace-nowrap ml-4">15. november 2024</span>
           </div>
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             Vulkanen slår dørene op på vid gab og byder alle velkommen. Styregruppen for etableringen ser frem til stiftende generalforsamling for "Vulkanen Mors" mandag den 24/11. Kom og være med, begynder med fællesspisning kl. 17.30. Her er plads til alle ideer og forslag der kan skabe liv og fællesskab i disse fantastiske rammer der nu er i borgernes hænder.
@@ -229,9 +229,37 @@ export default function Home() {
           </p>
         </div>
 
+        {/* Fællesspisning Event */}
+        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
+          {/* NEW Badge */}
+          <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
+            NYT
+          </div>
+          
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Fællesspisning den 24/11</h3>
+          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. Vulkanen er tændt!
+          </p>
+          <div className="flex justify-end">
+            <a
+              href="/dokumenter/fællesspisning-24-nov.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              <span className="flex items-center">
+                Læs mere
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
         {/* General Status */}
         <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Status</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Andel Status</h3>
           <p className="text-lg text-gray-700 leading-relaxed">
             Vi er i gang med at samle opbakning og tegne andele. Følg med her for opdateringer om projektets fremskridt.
           </p>
