@@ -200,14 +200,38 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Status Section */}
+      {/* Status & Nyheder Section */}
       <Section
         id="status"
-        title="Status"
+        title="Status & Nyheder"
         subtitle="Hvor er vi i processen?"
         className="bg-white"
       >
-        <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
+        {/* Latest News */}
+        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
+          {/* NEW Badge */}
+          <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
+            NYHED
+          </div>
+          
+          <div className="flex items-start justify-between mb-4">
+            <h3 className="text-2xl font-bold text-gray-900">Velkommen til Vulkanen!</h3>
+            <span className="text-sm text-gray-500 whitespace-nowrap ml-4">15. november 2025</span>
+          </div>
+          <p className="text-lg text-gray-700 leading-relaxed mb-4">
+            Vulkanen slår dørene op på vid gab og byder alle velkommen. Styregruppen for etableringen ser frem til stiftende generalforsamling for "Vulkanen Mors" mandag den 24/11. Kom og være med, begynder med fællesspisning kl. 17.30. Her er plads til alle ideer og forslag der kan skabe liv og fællesskab i disse fantastiske rammer der nu er i borgernes hænder.
+          </p>
+          <p className="text-lg text-gray-700 leading-relaxed italic">
+            Vi ses
+          </p>
+          <p className="text-base text-gray-600 mt-2">
+            - Johannes Jørgensen
+          </p>
+        </div>
+
+        {/* General Status */}
+        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Status</h3>
           <p className="text-lg text-gray-700 leading-relaxed">
             Vi er i gang med at samle opbakning og tegne andele. Følg med her for opdateringer om projektets fremskridt.
           </p>
