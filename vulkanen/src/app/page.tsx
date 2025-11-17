@@ -483,25 +483,24 @@ export default function Home() {
       <Section
         id="kontakt"
         title="Kontakt Bestyrelsen"
-        subtitle="Konktakt os for at tegne anpart"
+        subtitle="Konktakt os for at tegne anpart - Vi tegner andele af 2500kr/styk"
         className="bg-white"
       >
-        <div className="bg-gray-50 rounded-lg p-8 shadow-sm mb-6">
-          <p className="text-lg text-gray-700 leading-relaxed text-center font-semibold">
-            Vi tegner andele af 2500kr/styk
-          </p>
-        </div>
-        <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          </p>
-          <div className="bg-[#ff904b] text-white rounded-lg p-6 text-center shadow-lg space-y-4">
-            <div className="text-xl font-semibold">
-              <span className="block"><strong>Søren Lyndrup</strong></span>
-              <span>Tlf: <a href="tel:30703809" className="underline text-white font-normal">30 70 38 09</a></span>
+        <div className="flex flex-col sm:flex-row justify-center sm:space-x-12 space-y-8 sm:space-y-0">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-gray-900 mb-3">
+              <strong>Søren Lyndrup</strong>
             </div>
-            <div className="text-xl font-semibold">
-              <span className="block"><strong>Søren Nygaard</strong></span>
-              <span>Tlf: <a href="tel:40767887" className="underline text-white font-normal">40 76 78 87</a></span>
+            <div className="text-xl text-gray-700 font-semibold mb-4">
+              Tlf: 30 70 38 09
+            </div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-gray-900 mb-3">
+              <strong>Søren Nygaard</strong>
+            </div>
+            <div className="text-xl text-gray-700 font-semibold mb-4">
+              Tlf: 40 76 78 87
             </div>
           </div>
         </div>

@@ -43,12 +43,12 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         {/* Left: Tegn anpart button */}
         <a
           href="#kontakt"
           onClick={scrollToContact}
-          className="bg-[#ff904b] hover:bg-[#e67d3a] text-white font-medium px-6 py-2 rounded transition-colors duration-200"
+          className="bg-[#ff904b] hover:bg-[#e67d3a] text-white font-medium px-4 py-2 sm:px-6 sm:py-2 rounded transition-colors duration-200 text-sm sm:text-base"
         >
           Tegn anpart
         </a>
@@ -58,7 +58,7 @@ export default function Header() {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
           onClick={scrollToTop}
         >
-          <div className="relative w-20 h-20">
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20">
             <Image
               src="/vulkanen-favicon.png"
               alt="Vulkanen logo"
@@ -69,14 +69,14 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Right: Menu button */}
+        {/* Right: Menu button (hamburger on mobile) */}
         <div className="relative">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="bg-gray-100 rounded-lg px-4 py-2 hover:bg-[#ff904b] hover:text-white transition-all duration-300 flex items-center gap-2 group"
           >
             <span className="text-xl font-bold">☰</span>
-            <span className="text-base font-medium">Menu</span>
+            <span className="text-base font-medium hidden sm:inline">Menu</span>
           </button>
 
           {/* Dropdown Menu */}
