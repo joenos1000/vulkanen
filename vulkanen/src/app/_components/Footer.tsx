@@ -87,7 +87,7 @@ export default function Footer() {
               © {currentYear} Vulkanen På Mors. Alle rettigheder forbeholdes.
             </p>
             <p>
-              Hjemmeside og design udarbejdet af Jonas Pipper
+              Hjemmeside og design udarbejdet af <Link href="https://www.linkedin.com/in/jonaspipper/" target="_blank" rel="noopener noreferrer" className="text-[#00bba6] hover:underline">Jonas Pipper</Link>
             </p>
           </div>
         </div>

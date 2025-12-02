@@ -1,11 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import Section from "./_components/Section";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
 export default function Home() {
+  const [showOlderNews, setShowOlderNews] = useState(false);
+
   const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const element = document.getElementById('kontakt');
@@ -14,11 +17,11 @@ export default function Home() {
     }
   };
 
-  const scrollToFaellesspisning = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToStatusNyheder = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('faellesspisning');
+    const element = document.getElementById('status og nyheder');
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -31,8 +34,8 @@ export default function Home() {
         {/* AKTUELT Event Card - Desktop only: positioned on the left, same level as hero image */}
         <div className="hidden md:block absolute left-4 md:left-12 top-1/2 -translate-y-1/2 z-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <a
-            href="#faellesspisning"
-            onClick={scrollToFaellesspisning}
+            href="#status og nyheder"
+            onClick={scrollToStatusNyheder}
             className="block group"
           >
             {/* Event Details Card with Circle */}
@@ -41,10 +44,10 @@ export default function Home() {
               <div className="absolute -top-2 -right-2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse-enhanced"></div>
               
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
-                Fællesspisning den 24/11
+                Status & Nyheder
               </h3>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-3">
-                Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. Vulkanen er tændt!
+                Læs om det aktuelle der sker på Vulkanen Mors
               </p>
               <div className="text-[#ff904b] font-semibold text-base flex items-center">
                 <span>Læs mere</span>
@@ -95,8 +98,8 @@ export default function Home() {
         {/* AKTUELT Event Card - Mobile only */}
         <div className="block md:hidden mx-auto px-4 py-4">
           <a
-            href="#faellesspisning"
-            onClick={scrollToFaellesspisning}
+            href="#status og nyheder"
+            onClick={scrollToStatusNyheder}
             className="block group"
           >
             {/* Event Details Card with Circle */}
@@ -105,10 +108,10 @@ export default function Home() {
               <div className="absolute -top-2 -right-2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse-enhanced"></div>
                
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
-                Fællesspisning den 24/11
+                Status & Nyheder
               </h3>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-3">
-                Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. Vulkanen er tændt!
+                Læs om det aktuelle der sker på Vulkanen Mors
               </p>
               <div className="text-[#ff904b] font-semibold text-base flex items-center">
                 <span>Læs mere</span>
@@ -121,7 +124,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="flex justify-center py-4 mt-auto animate-bounce">
+        <div className="hidden md:flex justify-center py-4 mt-auto animate-bounce">
           <svg
             className="w-6 h-6 text-gray-400"
             fill="none"
@@ -213,42 +216,20 @@ export default function Home() {
         subtitle="Hvor er vi i processen?"
         className="bg-white"
       >
-        {/* Latest News */}
-        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
+        {/* Vedtægter Vulkanen Mors - New Container */}
+        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
           {/* NEW Badge */}
           <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
             NYT
           </div>
-          
-          <div className="flex items-start justify-between mb-4">
-            <h3 className="text-2xl font-bold text-gray-900">Velkommen til Vulkanen!</h3>
-            <span className="text-sm text-gray-500 whitespace-nowrap ml-4">15. november 2024</span>
-          </div>
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            Vulkanen slår dørene op på vid gab og byder alle velkommen. Styregruppen for etableringen ser frem til stiftende generalforsamling for Vulkanen Mors mandag den 24/11. Kom og være med, begynder med fællesspisning kl. 17.30. Her er plads til alle ideer og forslag der kan skabe liv og fællesskab i disse fantastiske rammer der nu er i borgernes hænder.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed italic">
-            Vi ses
-          </p>
-          <p className="text-base text-gray-600 mt-2">
-            - Johannes Jørgensen
-          </p>
-        </div>
 
-        {/* Fællesspisning Event */}
-        <div id="faellesspisning" className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
-          {/* NEW Badge */}
-          <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
-            NYT
-          </div>
-          
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Fællesspisning den 24/11</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Vedtægter Vulkanen Mors</h3>
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. - <strong>Vulkanen er tændt!</strong>
+            Læs foreningens vedtægter og få indblik i formål, medlemskab, bestyrelse og meget mere.
           </p>
           <div className="flex justify-end">
             <a
-              href="/dokumenter/fællesspisning-24-nov.pdf"
+              href="/dokumenter/vedtægter-vulkanen.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
@@ -264,11 +245,86 @@ export default function Home() {
         </div>
 
         {/* General Status */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500">
+        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500 mb-6">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Andel Status</h3>
           <p className="text-lg text-gray-700 leading-relaxed">
             Vi er i gang med at samle opbakning og tegne andele. Følg med her for opdateringer om projektets fremskridt.
           </p>
+        </div>
+
+        {/* Toggle Button for Older News */}
+        <div className="text-center mb-6">
+          <button
+            onClick={() => setShowOlderNews(!showOlderNews)}
+            className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-base px-6 py-3 rounded-lg shadow-sm transition-all duration-300 transform hover:scale-105"
+          >
+            <span>{showOlderNews ? 'Skjul' : 'Læs'} tidligere nyheder og information</span>
+            <svg
+              className={`w-5 h-5 transition-transform duration-300 ${showOlderNews ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Collapsible Older News Section */}
+        <div
+          className={`transition-all duration-500 ease-in-out ${
+            showOlderNews ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+          }`}
+        >
+          {/* Latest News */}
+          <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
+            {/* For Nyligt Badge */}
+            <div className="absolute -top-3 -right-3 bg-gradient-to-br from-yellow-400 to-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+              For Nyligt
+            </div>
+            
+            <div className="flex items-start justify-between mb-4">
+              <h3 className="text-2xl font-bold text-gray-900">Velkommen til Vulkanen!</h3>
+              <span className="text-sm text-gray-500 whitespace-nowrap ml-4">15. november 2024</span>
+            </div>
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+              Vulkanen slår dørene op på vid gab og byder alle velkommen. Styregruppen for etableringen ser frem til stiftende generalforsamling for Vulkanen Mors mandag den 24/11. Kom og være med, begynder med fællesspisning kl. 17.30. Her er plads til alle ideer og forslag der kan skabe liv og fællesskab i disse fantastiske rammer der nu er i borgernes hænder.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed italic">
+              Vi ses
+            </p>
+            <p className="text-base text-gray-600 mt-2">
+              - Johannes Jørgensen
+            </p>
+          </div>
+
+          {/* Fællesspisning Event */}
+          <div id="faellesspisning" className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
+            {/* For Nyligt Badge */}
+            <div className="absolute -top-3 -right-3 bg-gradient-to-br from-yellow-400 to-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+              For Nyligt
+            </div>
+            
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Fællesspisning den 24/11</h3>
+            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. - <strong>Vulkanen er tændt!</strong>
+            </p>
+            <div className="flex justify-end">
+              <a
+                href="/dokumenter/fællesspisning-24-nov.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              >
+                <span className="flex items-center">
+                  Læs mere
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
       </Section>
 
