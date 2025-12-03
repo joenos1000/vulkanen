@@ -632,7 +632,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-lg font-semibold text-gray-600 mb-2">Bankoverførsel</p>
-                  <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Frøslev Mollerup Sparrekasse</p>
+                  <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Frøslev Mollerup Sparekasse</p>
                   <p className="text-2xl md:text-3xl font-mono font-bold text-gray-900">9133 - 1070028</p>
                 </div>
               </div>
