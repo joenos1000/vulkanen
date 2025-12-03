@@ -616,7 +616,7 @@ export default function Home() {
       >
         <div className="bg-white rounded-lg p-8 md:p-12 shadow-sm border-l-4 border-[#ff904b] text-center">
           <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
-            Kunne du tænke dig at støtte op om projekt "Vulkanen Mors" med økonomisk støtte?
+            Kunne du tænke dig at støtte op om projekt Vulkanen Mors med økonomisk støtte?
             Der er mulighed for at købe indskudsbeviser à <strong>2.500 kr.</strong> eller give en gave.
           </p>
           
