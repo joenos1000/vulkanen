@@ -22,9 +22,9 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToSupport = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('kontakt');
+    const element = document.getElementById('stoet-vulkanen');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -46,8 +46,8 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         {/* Left: Tegn anpart button */}
         <a
-          href="#kontakt"
-          onClick={scrollToContact}
+          href="#stoet-vulkanen"
+          onClick={scrollToSupport}
           className="bg-[#ff904b] hover:bg-[#e67d3a] text-white font-medium px-4 py-2 sm:px-6 sm:py-2 rounded transition-colors duration-200 text-sm sm:text-base"
         >
           Tegn anpart
