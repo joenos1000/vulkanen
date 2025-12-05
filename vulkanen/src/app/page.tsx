@@ -89,7 +89,7 @@ export default function Home() {
           {/* Call to Action Text */}
           <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
             <h2 className="text-lg md:text-2xl lg:text-3xl font-semibold text-gray-900 max-w-4xl mx-auto leading-relaxed mb-8">
-              Vi er i gang med at tegne andele - Din opbakling er vigtig​
+              Vi er i gang med at tegne andele - Din opbakning er vigtig​
             </h2>
             
             {/* Tegne Andel Button */}
