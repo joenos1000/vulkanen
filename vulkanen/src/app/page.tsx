@@ -623,30 +623,17 @@ export default function Home() {
           <div className="bg-gray-50 rounded-lg p-8 md:p-10 mb-6">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">Betalingsoplysninger</h3>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="flex flex-col items-center order-2 md:order-1">
-                <div className="flex-shrink-0 w-12 h-12 bg-[#049133] rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-gray-600 mb-2">Bankoverførsel</p>
-                  <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Frøslev Mollerup Sparekasse</p>
-                  <p className="text-2xl md:text-3xl font-mono font-bold text-gray-900">9133 - 1070028</p>
-                </div>
+            <div className="flex flex-col items-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#049133] rounded-full flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
               </div>
-              
-              <div className="flex flex-col items-center order-1 md:order-2">
-                <div className="flex-shrink-0 w-12 h-12 bg-[#5e79fa] rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-gray-600 mb-2">MobilePay</p>
-                  <p className="text-2xl md:text-3xl font-mono font-bold text-gray-900">2595wg</p>
-                </div>
+              <div>
+                <p className="text-lg font-semibold text-gray-600 mb-2">Bankoverførsel</p>
+                <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Frøslev Mollerup Sparekasse</p>
+                <p className="text-2xl md:text-3xl font-mono font-bold text-gray-900 mb-6">9133 - 1070028</p>
+                <p className="text-lg md:text-xl text-gray-700 font-semibold leading-relaxed">Ved betaling bedes du oplyse dit navn, adresse og telefonnummer på overførslen, så vi kan spore betalingen.</p>
               </div>
             </div>
           </div>
