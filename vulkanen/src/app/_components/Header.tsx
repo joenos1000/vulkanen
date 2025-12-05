@@ -11,11 +11,12 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: "finansieringsplan", number: 1, label: "Finansieringsplan" },
-  { id: "status", number: 2, label: "Status" },
+  { id: "status og nyheder", number: 2, label: "Status & Nyheder" },
   { id: "vaerksted", number: 3, label: "VÆRKsted" },
   { id: "velo-mors", number: 4, label: "Velo Mors" },
   { id: "vaerdier", number: 5, label: "Værdier" },
-  { id: "kontakt", number: 6, label: "Kontakt Bestyrelsen" },
+  { id: "stoet-vulkanen", number: 6, label: "Støt Vulkanen" },
+  { id: "kontakt", number: 7, label: "Kontakt Bestyrelsen" },
 ];
 
 export default function Header() {
