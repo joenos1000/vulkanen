@@ -654,7 +654,7 @@ export default function Home() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Formand */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <div className="text-sm font-semibold text-[#ff904b] mb-2">Formand</div>
             <div className="text-2xl font-bold text-gray-900 mb-3">Søren Nygaard</div>
             <div className="text-lg text-gray-700 mb-2">
@@ -669,7 +669,7 @@ export default function Home() {
           </div>
 
           {/* Næstformand */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-blue-500">
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-blue-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <div className="text-sm font-semibold text-blue-500 mb-2">Næstformand</div>
             <div className="text-2xl font-bold text-gray-900 mb-3">Martin Bay-Mortensen</div>
             <div className="text-lg text-gray-700 mb-2">
@@ -684,7 +684,7 @@ export default function Home() {
           </div>
 
           {/* Kasserer */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-green-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <div className="text-sm font-semibold text-green-500 mb-2">Kasserer</div>
             <div className="text-2xl font-bold text-gray-900 mb-3">Johannes Jørgensen</div>
             <div className="text-lg text-gray-700 mb-2">
@@ -699,7 +699,7 @@ export default function Home() {
           </div>
 
           {/* Medlem - Kirsten Pedersen */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
             <div className="text-2xl font-bold text-gray-900 mb-3">Kirsten Pedersen</div>
             <div className="text-lg text-gray-700 mb-2">
@@ -714,7 +714,7 @@ export default function Home() {
           </div>
 
           {/* Medlem - Morten Pipper */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
             <div className="text-2xl font-bold text-gray-900 mb-3">Morten Pipper</div>
             <div className="text-lg text-gray-700 mb-2">
@@ -729,7 +729,7 @@ export default function Home() {
           </div>
 
           {/* Medlem - Søren Lyndrup */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
             <div className="text-2xl font-bold text-gray-900 mb-3">Søren Lyndrup</div>
             <div className="text-lg text-gray-700 mb-2">
@@ -744,7 +744,7 @@ export default function Home() {
           </div>
 
           {/* Medlem - Anna Marie L. Klysner */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
             <div className="text-2xl font-bold text-gray-900 mb-3">Anna Marie L. Klysner</div>
             <div className="text-lg text-gray-700 mb-2">
