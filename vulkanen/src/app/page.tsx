@@ -646,28 +646,115 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Kontakt Bestyrelsen Section */}
+      {/* Bestyrelsen Section */}
       <Section
         id="kontakt"
-        title="Kontakt Bestyrelsen"
-        subtitle="Konktakt os for at tegne anpart - Vi tegner andele af 2500kr/styk"
+        title="Bestyrelsen"
         className="bg-white"
       >
-        <div className="flex flex-col sm:flex-row justify-center sm:space-x-12 space-y-8 sm:space-y-0">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-gray-900 mb-3">
-              <strong>Søren Lyndrup</strong>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Formand */}
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
+            <div className="text-sm font-semibold text-[#ff904b] mb-2">Formand</div>
+            <div className="text-2xl font-bold text-gray-900 mb-3">Søren Nygaard</div>
+            <div className="text-lg text-gray-700 mb-2">
+              <strong>Tlf:</strong> 40 76 78 87
             </div>
-            <div className="text-xl text-gray-700 font-semibold mb-4">
-              Tlf: 30 70 38 09
+            <div className="text-lg text-gray-700">
+              <strong>E-mail:</strong>{" "}
+              <a href="mailto:srnygaard@hotmail.com" className="text-[#ff904b] hover:underline">
+                srnygaard@hotmail.com
+              </a>
             </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-gray-900 mb-3">
-              <strong>Søren Nygaard</strong>
+
+          {/* Næstformand */}
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-blue-500">
+            <div className="text-sm font-semibold text-blue-500 mb-2">Næstformand</div>
+            <div className="text-2xl font-bold text-gray-900 mb-3">Martin Bay-Mortensen</div>
+            <div className="text-lg text-gray-700 mb-2">
+              <strong>Tlf:</strong> 60 15 82 90
             </div>
-            <div className="text-xl text-gray-700 font-semibold mb-4">
-              Tlf: 40 76 78 87
+            <div className="text-lg text-gray-700">
+              <strong>E-mail:</strong>{" "}
+              <a href="mailto:mamo@danishagro.dk" className="text-blue-500 hover:underline">
+                mamo@danishagro.dk
+              </a>
+            </div>
+          </div>
+
+          {/* Kasserer */}
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+            <div className="text-sm font-semibold text-green-500 mb-2">Kasserer</div>
+            <div className="text-2xl font-bold text-gray-900 mb-3">Johannes Jørgensen</div>
+            <div className="text-lg text-gray-700 mb-2">
+              <strong>Tlf:</strong> 23 39 46 41
+            </div>
+            <div className="text-lg text-gray-700">
+              <strong>E-mail:</strong>{" "}
+              <a href="mailto:Minna.Johannes61@gmail.com" className="text-green-500 hover:underline">
+                Minna.Johannes61@gmail.com
+              </a>
+            </div>
+          </div>
+
+          {/* Medlem - Kirsten Pedersen */}
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+            <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
+            <div className="text-2xl font-bold text-gray-900 mb-3">Kirsten Pedersen</div>
+            <div className="text-lg text-gray-700 mb-2">
+              <strong>Tlf:</strong> 51 55 77 40
+            </div>
+            <div className="text-lg text-gray-700">
+              <strong>E-mail:</strong>{" "}
+              <a href="mailto:npkp65@gmail.com" className="text-purple-500 hover:underline">
+                npkp65@gmail.com
+              </a>
+            </div>
+          </div>
+
+          {/* Medlem - Morten Pipper */}
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+            <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
+            <div className="text-2xl font-bold text-gray-900 mb-3">Morten Pipper</div>
+            <div className="text-lg text-gray-700 mb-2">
+              <strong>Tlf:</strong> 26 81 93 81
+            </div>
+            <div className="text-lg text-gray-700">
+              <strong>E-mail:</strong>{" "}
+              <a href="mailto:mortenpipper@hotmail.com" className="text-purple-500 hover:underline">
+                mortenpipper@hotmail.com
+              </a>
+            </div>
+          </div>
+
+          {/* Medlem - Søren Lyndrup */}
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+            <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
+            <div className="text-2xl font-bold text-gray-900 mb-3">Søren Lyndrup</div>
+            <div className="text-lg text-gray-700 mb-2">
+              <strong>Tlf:</strong> 30 70 38 09
+            </div>
+            <div className="text-lg text-gray-700">
+              <strong>E-mail:</strong>{" "}
+              <a href="mailto:sl@sorenlyndrup.dk" className="text-purple-500 hover:underline">
+                sl@sorenlyndrup.dk
+              </a>
+            </div>
+          </div>
+
+          {/* Medlem - Anna Marie L. Klysner */}
+          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500">
+            <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
+            <div className="text-2xl font-bold text-gray-900 mb-3">Anna Marie L. Klysner</div>
+            <div className="text-lg text-gray-700 mb-2">
+              <strong>Tlf:</strong> 20 44 96 58
+            </div>
+            <div className="text-lg text-gray-700">
+              <strong>E-mail:</strong>{" "}
+              <a href="mailto:Anna-tingholm@hotmail.com" className="text-purple-500 hover:underline">
+                Anna-tingholm@hotmail.com
+              </a>
             </div>
           </div>
         </div>
