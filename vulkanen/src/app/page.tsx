@@ -607,6 +607,35 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* Book Vulkanen Section */}
+      <Section
+        id="book-vulkanen"
+        title="Book Vulkanen"
+        subtitle="Book Vulkanen til din event"
+        className="bg-white"
+      >
+        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
+            Ønsker du at booke lokaler i Vulkanen så kontakt Johannes Jørgensen
+          </p>
+          
+          {/* Johannes Contact Card */}
+          <div className="bg-gray-50 rounded-lg p-6 shadow-sm border-l-4 border-green-500 max-w-md mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div className="text-sm font-semibold text-green-500 mb-2">Kasserer</div>
+            <div className="text-2xl font-bold text-gray-900 mb-3">Johannes Jørgensen</div>
+            <div className="text-lg text-gray-700 mb-2">
+              <strong>Tlf:</strong> 23 39 46 41
+            </div>
+            <div className="text-lg text-gray-700">
+              <strong>E-mail:</strong>{" "}
+              <a href="mailto:Minna.Johannes61@gmail.com" className="text-green-500 hover:underline">
+                Minna.Johannes61@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       {/* Støt Vulkanen Section */}
       <Section
         id="stoet-vulkanen"
