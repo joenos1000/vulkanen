@@ -92,14 +92,32 @@ export default function Home() {
               Vi er i gang med at tegne andele - Din opbakning er vigtig​
             </h2>
             
-            {/* Tegne Andel Button */}
-            <a
-              href="#stoet-vulkanen"
-              onClick={scrollToSupport}
-              className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
-            >
-              Tegn anpart
-            </a>
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {/* Tegne Andel Button */}
+              <a
+                href="#stoet-vulkanen"
+                onClick={scrollToSupport}
+                className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
+              >
+                Tegn anpart
+              </a>
+              
+              {/* Book Vulkanen Button */}
+              <a
+                href="#book-vulkanen"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('book-vulkanen');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
+              >
+                Book Vulkanen
+              </a>
+            </div>
           </div>
         </div>
 
