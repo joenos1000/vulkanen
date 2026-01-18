@@ -89,7 +89,7 @@ export default function Home() {
           {/* Call to Action Text */}
           <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
             <h2 className="text-lg md:text-2xl lg:text-3xl font-semibold text-gray-900 max-w-4xl mx-auto leading-relaxed mb-8">
-              Vi er i gang med at tegne andele - Din opbakning er vigtig​
+              Din opbakning er vigtig​
             </h2>
             
             {/* Action Buttons */}
@@ -100,7 +100,7 @@ export default function Home() {
                 onClick={scrollToSupport}
                 className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
               >
-                Tegn anpart
+                Støt Økonomisk
               </a>
               
               {/* Book Vulkanen Button */}
@@ -172,11 +172,39 @@ export default function Home() {
         subtitle="Hvor er vi i processen?"
         className="bg-white"
       >
-        {/* Vedtægter Vulkanen Mors - New Container */}
-        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
+        {/* Nyhedsbrev 2 - 15-01-2025 */}
+        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
           {/* NEW Badge */}
           <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
             NYT
+          </div>
+
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Nyhedsbrev 2 - 15. januar 2025</h3>
+          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            Læs det seneste nyhedsbrev fra Vulkanen Mors med opdateringer om foreningens aktiviteter og fremtidsplaner.
+          </p>
+          <div className="flex justify-end">
+            <a
+              href="/dokumenter/Vulkanen - nyhedsbrev 2 - 15-01-2025.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              <span className="flex items-center">
+                Læs mere
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        {/* Vedtægter Vulkanen Mors */}
+        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
+          {/* For Nyligt Badge */}
+          <div className="absolute -top-3 -right-3 bg-gradient-to-br from-yellow-400 to-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+            For Nyligt
           </div>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Vedtægter Vulkanen Mors</h3>

@@ -52,7 +52,7 @@ export default function Header() {
           onClick={scrollToSupport}
           className="bg-[#ff904b] hover:bg-[#e67d3a] text-white font-medium px-4 py-2 sm:px-6 sm:py-2 rounded transition-colors duration-200 text-sm sm:text-base"
         >
-          Tegn anpart
+          Støt Økonomisk
         </a>
         
         {/* Center: Logo */}
@@ -60,7 +60,7 @@ export default function Header() {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
           onClick={scrollToTop}
         >
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+          <div className="relative w-24 h-24 sm:w-28 sm:h-28">
             <Image
               src="/vulkanen-favicon.png"
               alt="Vulkanen logo"
