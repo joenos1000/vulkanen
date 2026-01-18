@@ -165,76 +165,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Finansieringsplan Section */}
-      <Section
-        id="finansieringsplan"
-        title="Finansieringsplan"
-        subtitle="Det bliver centralt at sikre en overgangsperiode på op til 2 år mens visionen formes og realiseres."
-        className="bg-gray-50"
-      >
-        {/* Finansieringsmodel */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b]">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Finansieringsmodel</h3>
-          <ul className="space-y-3 text-gray-700 text-lg">
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Der dannes en forening eller selskab som overtager bygningerne.</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Foreningen/selskabet står selv for drift i 2 år, evt. med understøttelse.</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Vi tegner andele af 2500kr/styk</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Fordele og Udfordringer */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Fordele */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-t-4 border-green-500">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Fordele</h3>
-            <ul className="space-y-3 text-gray-700 text-lg">
-              <li className="flex items-start">
-                <span className="text-green-500 mr-3 text-2xl font-bold">+</span>
-                <span>Lokal handlekraft og frihed</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 mr-3 text-2xl font-bold">+</span>
-                <span>Sponsorater og anparter kan inddrages</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Udfordringer */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-t-4 border-amber-500">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Udfordringer</h3>
-            <ul className="space-y-3 text-gray-700 text-lg">
-              <li className="flex items-start">
-                <span className="text-amber-500 mr-3 text-2xl font-bold">-</span>
-                <span>Kræver kapital og driftssikring i 2 år</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-8">
-          <p className="text-xl md:text-2xl text-gray-700 mb-6">
-            Kontakt Bestyrelsen – og tegn anparter. Så støtter du finansieringsplanen
-          </p>
-          <a
-            href="#stoet-vulkanen"
-            onClick={scrollToSupport}
-            className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
-          >
-            Tegn anpart
-          </a>
-        </div>
-      </Section>
-
       {/* Status & Nyheder Section */}
       <Section
         id="status og nyheder"
@@ -351,6 +281,76 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </div>
+      </Section>
+
+      {/* Finansieringsplan Section */}
+      <Section
+        id="finansieringsplan"
+        title="Finansieringsplan"
+        subtitle="Det bliver centralt at sikre en overgangsperiode på op til 2 år mens visionen formes og realiseres."
+        className="bg-gray-50"
+      >
+        {/* Finansieringsmodel */}
+        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b]">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Finansieringsmodel</h3>
+          <ul className="space-y-3 text-gray-700 text-lg">
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Der dannes en forening eller selskab som overtager bygningerne.</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Foreningen/selskabet står selv for drift i 2 år, evt. med understøttelse.</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-[#ff904b] mr-3 mt-1">•</span>
+              <span>Vi tegner andele af 2500kr/styk</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Fordele og Udfordringer */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Fordele */}
+          <div className="bg-white rounded-lg p-8 shadow-sm border-t-4 border-green-500">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Fordele</h3>
+            <ul className="space-y-3 text-gray-700 text-lg">
+              <li className="flex items-start">
+                <span className="text-green-500 mr-3 text-2xl font-bold">+</span>
+                <span>Lokal handlekraft og frihed</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-500 mr-3 text-2xl font-bold">+</span>
+                <span>Sponsorater og anparter kan inddrages</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Udfordringer */}
+          <div className="bg-white rounded-lg p-8 shadow-sm border-t-4 border-amber-500">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Udfordringer</h3>
+            <ul className="space-y-3 text-gray-700 text-lg">
+              <li className="flex items-start">
+                <span className="text-amber-500 mr-3 text-2xl font-bold">-</span>
+                <span>Kræver kapital og driftssikring i 2 år</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-8">
+          <p className="text-xl md:text-2xl text-gray-700 mb-6">
+            Kontakt Bestyrelsen – og tegn anparter. Så støtter du finansieringsplanen
+          </p>
+          <a
+            href="#stoet-vulkanen"
+            onClick={scrollToSupport}
+            className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
+          >
+            Tegn anpart
+          </a>
         </div>
       </Section>
 
