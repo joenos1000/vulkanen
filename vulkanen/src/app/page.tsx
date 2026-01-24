@@ -117,6 +117,16 @@ export default function Home() {
               >
                 Book Vulkanen
               </a>
+              
+              {/* Vision og Strategi Button */}
+              <a
+                href="/dokumenter/vulkanen-vision-stategi-pp.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#00a6c0] hover:bg-[#008ba3] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
+              >
+                Vision og Strategi
+              </a>
             </div>
           </div>
         </div>
