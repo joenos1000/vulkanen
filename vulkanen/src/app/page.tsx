@@ -335,15 +335,15 @@ export default function Home() {
           <ul className="space-y-3 text-gray-700 text-lg">
             <li className="flex items-start">
               <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Der dannes en forening eller selskab som overtager bygningerne.</span>
+              <span>Ørding Medborgerhus Aps overtager bygningerne</span>
             </li>
             <li className="flex items-start">
               <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Foreningen/selskabet står selv for drift i 2 år, evt. med understøttelse.</span>
+              <span>Vulkanen Mors lejer bygningerne</span>
             </li>
             <li className="flex items-start">
               <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Vi tegner andele af 2500kr/styk</span>
+              <span>Man kan støtte med lån i klumper af 2.500 kroner</span>
             </li>
           </ul>
         </div>
@@ -387,7 +387,7 @@ export default function Home() {
             onClick={scrollToSupport}
             className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
           >
-            Tegn anpart
+            Støt økonomisk
           </a>
         </div>
       </Section>
@@ -671,22 +671,37 @@ export default function Home() {
         className="bg-white"
       >
         <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 text-center">
             Ønsker du at booke lokaler i Vulkanen så kontakt Johannes Jørgensen
           </p>
-          
-          {/* Johannes Contact Card */}
-          <div className="bg-gray-50 rounded-lg p-6 shadow-sm border-l-4 border-green-500 max-w-md mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div className="text-sm font-semibold text-green-500 mb-2">Kasserer</div>
-            <div className="text-2xl font-bold text-gray-900 mb-3">Johannes Jørgensen</div>
-            <div className="text-lg text-gray-700 mb-2">
-              <strong>Tlf:</strong> 23 39 46 41
+
+          {/* Contact Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Johannes Contact Card */}
+            <div className="bg-gray-50 rounded-lg p-6 shadow-sm border-l-4 border-green-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div className="text-sm font-semibold text-green-500 mb-2">Kasserer</div>
+              <div className="text-2xl font-bold text-gray-900 mb-3">Johannes Jørgensen</div>
+              <div className="text-lg text-gray-700 mb-2">
+                <strong>Tlf:</strong> 23 39 46 41
+              </div>
+              <div className="text-lg text-gray-700">
+                <strong>E-mail:</strong>{" "}
+                <a href="mailto:Minna.Johannes61@gmail.com" className="text-green-500 hover:underline">
+                  Minna.Johannes61@gmail.com
+                </a>
+              </div>
             </div>
-            <div className="text-lg text-gray-700">
-              <strong>E-mail:</strong>{" "}
-              <a href="mailto:Minna.Johannes61@gmail.com" className="text-green-500 hover:underline">
-                Minna.Johannes61@gmail.com
-              </a>
+
+            {/* Address Card */}
+            <div className="bg-gray-50 rounded-lg p-6 shadow-sm border-l-4 border-[#00a6c0] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div className="text-sm font-semibold text-[#00a6c0] mb-2">Lokation</div>
+              <div className="text-2xl font-bold text-gray-900 mb-3">Adresse</div>
+              <div className="text-lg text-gray-700 mb-2">
+                Skolesvinget 9
+              </div>
+              <div className="text-lg text-gray-700">
+                7990 Øster Assels
+              </div>
             </div>
           </div>
         </div>
@@ -702,7 +717,12 @@ export default function Home() {
         <div className="bg-white rounded-lg p-8 md:p-12 shadow-sm border-l-4 border-[#ff904b] text-center">
           <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
             Kunne du tænke dig at støtte op om projekt Vulkanen Mors med økonomisk støtte?
-            Der er mulighed for at købe indskudsbeviser à <strong>2.500 kr.</strong> eller give en gave.
+          </p>
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
+            Det kan gøres med låneindskud eller ved at give en gave.
+          </p>
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
+            Man kan støtte med lån i klumper af <strong>2.500 kroner</strong>.
           </p>
           
           <div className="bg-gray-50 rounded-lg p-8 md:p-10 mb-6">
@@ -737,6 +757,19 @@ export default function Home() {
         title="Bestyrelsen"
         className="bg-white"
       >
+        {/* Address Banner */}
+        <div className="bg-gradient-to-r from-[#ff904b] to-[#e67d3a] rounded-lg p-6 md:p-8 mb-8 shadow-lg">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-white">
+            <svg className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div className="text-center md:text-left">
+              <p className="text-xl md:text-2xl font-bold">Skolesvinget 9, 7990 Øster Assels</p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Formand */}
           <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
