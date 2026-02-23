@@ -182,14 +182,14 @@ export default function Home() {
         subtitle="Hvor er vi i processen?"
         className="bg-white"
       >
-        {/* Nyhedsbrev 2 - 15-01-2025 */}
+        {/* Nyhedsbrev 2 - 15-01-2026 */}
         <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
           {/* NEW Badge */}
           <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
             NYT
           </div>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Nyhedsbrev 2 - 15. januar 2025</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Nyhedsbrev 2 - 15. januar 2026</h3>
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
             Læs det seneste nyhedsbrev fra Vulkanen Mors med opdateringer om foreningens aktiviteter og fremtidsplaner.
           </p>
