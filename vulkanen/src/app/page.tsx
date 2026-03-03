@@ -847,6 +847,27 @@ export default function Home() {
             Kontakt bestyrelsen herunder hvis du har spørgsmål
           </p>
         </div>
+
+        {/* Mascot Section */}
+        <div id="vulk" className="bg-white rounded-lg p-6 md:p-8 shadow-sm border-l-4 border-[#ff904b] mt-6">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-shrink-0">
+              <Image
+                src="/Vulk.png"
+                alt="Vulk - Vulkakanistens mascot nøglering"
+                width={270}
+                height={270}
+                className="rounded-lg object-contain transition-transform duration-300 hover:scale-105 hover:rotate-2"
+              />
+            </div>
+            <div className="text-left">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Vores Mascot &ndash; &ldquo;Vulk&rdquo;</h3>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                Vores Mascot Vulkakanisten &ldquo;Vulk&rdquo; er sat i fabrikation. Den kan købes som nøglering for <strong>40 kr.</strong> hos <strong>Ørding Købmand</strong> eller ved henvendelse til <a href="tel:23394641" className="text-[#ff904b] hover:underline font-semibold">23 39 46 41</a>.
+              </p>
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* Bestyrelsen Section */}
