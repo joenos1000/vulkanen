@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
-      <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between relative">
         {/* Left: Tegn anpart button */}
         <a
           href="#stoet-vulkanen"

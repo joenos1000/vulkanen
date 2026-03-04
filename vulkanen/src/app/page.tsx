@@ -76,13 +76,42 @@ export default function Home() {
 
           {/* Bestyrelse Image */}
           <div className="flex justify-center mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            <div className="relative w-full max-w-4xl h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/billeder/bestyrelse-foran-vulkanen.JPEG"
-                alt="Bestyrelsen foran Vulkanen"
-                fill
-                className="object-cover"
-              />
+            <div className="relative w-full max-w-4xl">
+              <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
+                <Image
+                  src="/billeder/bestyrelse-foran-vulkanen.JPEG"
+                  alt="Bestyrelsen foran Vulkanen"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              {/* Vulk Keyring - bottom right corner, outside photo */}
+              <a
+                href="#vulk"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('vulk');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className="hidden md:block absolute -bottom-24 right-0 translate-x-1/2 group cursor-pointer z-10"
+              >
+                {/* Vulk Image - tilted */}
+                <Image
+                  src="/Vulk.png"
+                  alt="Vulk nøglering"
+                  width={200}
+                  height={200}
+                  className="drop-shadow-lg rotate-[15deg] transition-transform duration-300 group-hover:scale-110"
+                />
+                {/* Text below Vulk */}
+                <div className="text-center mt-2 whitespace-nowrap">
+                  <span className="font-semibold text-gray-900 text-base">
+                    Køb en &ldquo;Vulk&rdquo; nøglering
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
 
