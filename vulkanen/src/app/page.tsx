@@ -758,7 +758,7 @@ export default function Home() {
                   <td className="px-4 py-3"></td>
                   <td className="px-4 py-3"></td>
                   <td className="px-4 py-3">
-                    <div className="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2">
+                    <div className="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                       <div className="text-xs font-semibold text-[#ff904b] mb-0.5">16.30–18.00</div>
                       <div className="font-semibold text-gray-800">Uni cyklning</div>
                       <div className="text-xs text-gray-500 mt-1">Anne Lise</div>
@@ -771,7 +771,7 @@ export default function Home() {
                   <td className="px-4 py-3 font-medium text-gray-400 bg-gray-50 whitespace-nowrap">18:00</td>
                   <td className="px-4 py-3"></td>
                   <td className="px-4 py-3">
-                    <div className="bg-purple-50 border border-purple-200 rounded-lg px-3 py-2">
+                    <div className="bg-purple-50 border border-purple-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                       <div className="text-xs font-semibold text-purple-600 mb-0.5">18.30–19.30</div>
                       <div className="font-semibold text-gray-800">Jumping fitness</div>
                       <div className="text-xs text-gray-500 mt-1">Karina Thøgersen</div>
@@ -784,14 +784,14 @@ export default function Home() {
                 <tr className="border-b border-gray-100 bg-white">
                   <td className="px-4 py-3 font-medium text-gray-400 bg-gray-50 whitespace-nowrap">19:00</td>
                   <td className="px-4 py-3">
-                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                       <div className="text-xs font-semibold text-green-700 mb-0.5">19:00</div>
                       <div className="font-semibold text-gray-800">Badminton</div>
                       <div className="text-xs text-gray-500 mt-1">Maja Møller Jensen</div>
                     </div>
                   </td>
                   <td className="px-4 py-3">
-                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                       <div className="text-xs font-semibold text-green-700 mb-0.5">Fra 19.30</div>
                       <div className="font-semibold text-gray-800">Badminton</div>
                       <div className="text-xs text-gray-500 mt-1">Susanne Nygaard</div>
@@ -799,14 +799,14 @@ export default function Home() {
                   </td>
                   <td className="px-4 py-3"></td>
                   <td className="px-4 py-3">
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                       <div className="text-xs font-semibold text-blue-600 mb-0.5">19.00–20.00</div>
                       <div className="font-semibold text-gray-800">Bordtennis</div>
                       <div className="text-xs text-gray-500 mt-1">Kåre Have Jensen</div>
                     </div>
                   </td>
                   <td className="px-4 py-3">
-                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                       <div className="text-xs font-semibold text-green-700 mb-0.5">19:00</div>
                       <div className="font-semibold text-gray-800">Badminton</div>
                       <div className="text-xs text-gray-500 mt-1">Morten Pipper</div>
@@ -893,6 +893,8 @@ export default function Home() {
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Vores Mascot &ndash; &ldquo;Vulk&rdquo;</h3>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                 Vores Mascot Vulkakanisten &ldquo;Vulk&rdquo; er sat i fabrikation. Den kan købes som nøglering for <strong>40 kr.</strong> hos <strong>Ørding Købmand</strong> eller ved henvendelse til <a href="tel:23394641" className="text-[#ff904b] hover:underline font-semibold">23 39 46 41</a>.
+                <br />
+                Hele beløb går direkte til Vulkanen.
               </p>
             </div>
           </div>
