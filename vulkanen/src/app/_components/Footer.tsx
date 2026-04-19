@@ -5,103 +5,116 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* About Section */}
-          <div className="space-y-4">
-            <Link href="/" aria-label="Vulkanen logo" className="inline-block">
-              <Image
-                src="/vulkanen-favicon.png"
-                alt="Vulkanen logo"
-                width={128}
-                height={128}
-                className="object-contain"
-                priority
-              />
+    <footer className="relative bg-[var(--ink)] text-[var(--paper-3)] overflow-hidden">
+      {/* Giant typographic mark */}
+      <div className="absolute -bottom-10 md:-bottom-24 left-0 right-0 pointer-events-none select-none">
+        <p
+          className="font-display text-[22vw] leading-[0.8] text-[var(--paper)]/5 whitespace-nowrap text-center"
+          style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 144' }}
+        >
+          Vulkanen·Mors
+        </p>
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-10 pt-20 pb-10">
+        {/* Masthead */}
+        <div className="grid grid-cols-12 gap-8 mb-16">
+          <div className="col-span-12 md:col-span-5">
+            <Link href="/" aria-label="Vulkanen logo" className="inline-flex items-center gap-4 mb-6 group">
+              <div className="relative h-16 w-16 transition-transform group-hover:rotate-[-6deg]">
+                <Image
+                  src="/vulkanen-favicon.png"
+                  alt="Vulkanen logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span
+                className="font-display text-4xl text-[var(--paper)]"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+              >
+                Vulkanen
+              </span>
             </Link>
-            <p className="text-sm leading-relaxed">
-              Vulkanen På Mors - Et nyt kapitel for Ørding. Vi skaber et levende møde- og lærested for kreativitet, bevægelse og fællesskab.
+            <p className="text-sm leading-relaxed max-w-sm text-[var(--paper-3)]/80">
+              Vulkanen På Mors — Et nyt kapitel for Ørding. Vi skaber et levende
+              møde- og lærested for kreativitet, bevægelse og fællesskab.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Hurtige Links</h3>
-            <ul className="space-y-2">
+          <div className="col-span-6 md:col-span-3">
+            <p className="micro-label text-[var(--paper-3)]/60 mb-4">Indeks</p>
+            <ul className="space-y-2 text-[var(--paper)] font-display text-lg">
               <li>
-                <Link href="#finansieringsplan" className="hover:text-[#ff904b] transition-colors duration-200">
+                <Link href="#finansieringsplan" className="link-reveal">
                   Finansieringsplan
                 </Link>
               </li>
               <li>
-                <Link href="#status" className="hover:text-[#ff904b] transition-colors duration-200">
+                <Link href="#status og nyheder" className="link-reveal">
                   Status
                 </Link>
               </li>
               <li>
-                <Link href="#vaerksted" className="hover:text-[#ff904b] transition-colors duration-200">
+                <Link href="#vaerksted" className="link-reveal">
                   VÆRKsted
                 </Link>
               </li>
               <li>
-                <Link href="#velo-mors" className="hover:text-[#ff904b] transition-colors duration-200">
+                <Link href="#velo-mors" className="link-reveal">
                   Velo Mors
                 </Link>
               </li>
               <li>
-                <Link href="#vaerdier" className="hover:text-[#ff904b] transition-colors duration-200">
+                <Link href="#vaerdier" className="link-reveal">
                   Værdier
                 </Link>
               </li>
               <li>
-                <Link href="#kontakt" className="hover:text-[#ff904b] transition-colors duration-200">
+                <Link href="#kontakt" className="link-reveal">
                   Kontakt
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact & CTA */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Kontakt</h3>
-            <div className="space-y-3 mb-4">
-              <div className="flex items-start">
-                <svg className="w-5 h-5 text-[#ff904b] mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <div className="text-sm">
-                  <p>Skolesvinget 9</p>
-                  <p>7990 Øster Assels</p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <Link
-                href="#kontakt"
-                className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm"
-              >
-                Tegn Anpart
-              </Link>
-            </div>
+          <div className="col-span-6 md:col-span-4">
+            <p className="micro-label text-[var(--paper-3)]/60 mb-4">
+              Find os
+            </p>
+            <address className="not-italic text-[var(--paper)] font-display text-lg leading-snug mb-6">
+              Skolesvinget 9
+              <br />
+              7990 Øster Assels
+            </address>
+            <Link
+              href="#kontakt"
+              className="btn-ember !bg-[var(--paper)] !text-[var(--ink)] !border-[var(--paper)] hover:!bg-[var(--ember)] hover:!border-[var(--ember)] hover:!text-[var(--ink)]"
+            >
+              Tegn Anpart →
+            </Link>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <p>
-              © {currentYear} Vulkanen På Mors. Alle rettigheder forbeholdes.
-            </p>
-            <p>
-              Hjemmeside og design udarbejdet af <Link href="https://www.linkedin.com/in/jonaspipper/" target="_blank" rel="noopener noreferrer" className="text-[#00bba6] hover:underline">Jonas Pipper</Link>
-            </p>
-          </div>
+        {/* Divider */}
+        <div className="h-px w-full bg-[var(--paper-3)]/20 mb-6" />
+
+        {/* Colophon */}
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <p className="micro-label text-[var(--paper-3)]/60">
+            © {currentYear} · Vulkanen På Mors · Alle rettigheder forbeholdes
+          </p>
+          <p className="micro-label text-[var(--paper-3)]/60">
+            Hjemmeside &amp; design af{" "}
+            <Link
+              href="https://www.linkedin.com/in/jonaspipper/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--moss)] hover:text-[var(--paper)] transition-colors"
+            >
+              Jonas Pipper
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

@@ -6,894 +6,1244 @@ import Section from "./_components/Section";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
+// Small editorial building blocks
+
+function Kicker({ children, color = "var(--ember)" }: { children: React.ReactNode; color?: string }) {
+  return (
+    <div className="flex items-center gap-3 mb-4">
+      <span
+        className="h-1.5 w-1.5 rounded-full"
+        style={{ background: color }}
+      />
+      <span
+        className="micro-label"
+        style={{ color: "var(--ink-3)" }}
+      >
+        {children}
+      </span>
+    </div>
+  );
+}
+
+function BulletList({
+  items,
+  glyph = "◆",
+  color = "var(--ember)",
+}: {
+  items: React.ReactNode[];
+  glyph?: string;
+  color?: string;
+}) {
+  return (
+    <ul className="space-y-4">
+      {items.map((item, i) => (
+        <li key={i} className="flex items-start gap-4 group">
+          <span
+            className="font-mono text-[0.7rem] mt-1.5 pt-px shrink-0 tabular-nums"
+            style={{ color: "var(--ink-4)" }}
+          >
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <span
+            className="mt-1.5 shrink-0 transition-transform group-hover:rotate-[30deg]"
+            style={{ color }}
+          >
+            {glyph}
+          </span>
+          <span className="text-base md:text-lg leading-relaxed text-[var(--ink-2)] text-pretty flex-1">
+            {item}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function PaperCard({
+  children,
+  className = "",
+  accent,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  accent?: string;
+}) {
+  return (
+    <div
+      className={`paper-card p-6 sm:p-8 md:p-10 ${className}`}
+      style={accent ? ({ borderTopColor: accent, borderTopWidth: "3px" } as React.CSSProperties) : undefined}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function Home() {
   const [showOlderNews, setShowOlderNews] = useState(false);
 
-  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToSection = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    const element = document.getElementById('kontakt');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const scrollToSupport = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const element = document.getElementById('stoet-vulkanen');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const scrollToStatusNyheder = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const element = document.getElementById('status og nyheder');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const element = document.getElementById(id);
+    if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Header */}
+    <main className="relative min-h-screen overflow-x-hidden">
       <Header />
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col bg-white overflow-hidden pt-24">
-        {/* AKTUELT Event Card - Desktop only: positioned on the left, same level as hero image */}
-        <div className="hidden md:block absolute left-4 md:left-12 top-1/2 -translate-y-1/2 z-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <a
-            href="#status og nyheder"
-            onClick={scrollToStatusNyheder}
-            className="block group"
+
+      {/* ============================== HERO ============================== */}
+      <section className="relative min-h-[100vh] pt-28 md:pt-36 pb-20 px-4 sm:px-6 md:px-10">
+        {/* Background ornamental type */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-24 md:top-32 text-center overflow-hidden select-none"
+        >
+          <p
+            className="font-display text-[28vw] leading-[0.8] text-[var(--paper-3)]/50 whitespace-nowrap"
+            style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 144' }}
           >
-            {/* Event Details Card with Circle */}
-            <div className="relative bg-white rounded-lg shadow-xl p-6 max-w-xs border-l-4 border-[#ff904b] transform transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
-              {/* Green Animated Circle - Top Right Corner */}
-              <div className="absolute -top-2 -right-2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse-enhanced"></div>
-              
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
-                Status & Nyheder
-              </h3>
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-3">
-                Læs om det aktuelle der sker på Vulkanen Mors
-              </p>
-              <div className="text-[#ff904b] font-semibold text-base flex items-center">
-                <span>Læs mere</span>
-                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-          </a>
+            vulkanen
+          </p>
         </div>
 
-        {/* Content Container */}
-        <div className="relative z-10 container mx-auto px-4 py-4">
-          {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 text-center mb-8 tracking-tight">
-            Vulkanen Mors
-          </h1>
+        <div className="relative mx-auto max-w-7xl">
+          {/* Top dateline */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10 md:mb-16 rise-in">
+            <div className="flex items-center gap-4">
+              <span className="h-2 w-2 rounded-full bg-[var(--forest)] blink-dot" />
+              <span className="micro-label text-[var(--ink-3)]">
+                Fællesskab · Ørding · Mors
+              </span>
+            </div>
+            <span className="micro-label text-[var(--ink-3)]">
+              №{"  "}01 — Et nyt kapitel
+            </span>
+          </div>
 
-          {/* Bestyrelse Image */}
-          <div className="flex justify-center mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            <div className="relative w-full max-w-4xl">
-              <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
+          {/* Title */}
+          <div className="grid grid-cols-12 gap-4 md:gap-8 items-end mb-10 md:mb-14">
+            <h1
+              className="col-span-12 md:col-span-9 font-display text-[clamp(3.5rem,14vw,11rem)] leading-[0.82] tracking-tight text-[var(--ink)] text-balance rise-in"
+              style={{
+                fontVariationSettings: '"SOFT" 100, "WONK" 0, "opsz" 144',
+                animationDelay: "0.1s",
+              }}
+            >
+              Vulkanen <em className="italic text-[var(--ember-deep)]" style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 144' }}>Mors</em>
+            </h1>
+            <p
+              className="col-span-12 md:col-span-3 md:border-l md:border-[var(--rule)] md:pl-6 text-[var(--ink-2)] text-base md:text-lg leading-relaxed text-pretty rise-in"
+              style={{ animationDelay: "0.25s" }}
+            >
+              Et levende møde- og lærested for kreativitet, bevægelse og
+              fællesskab — båret af lokal handlekraft.
+            </p>
+          </div>
+
+          {/* Photo + AKTUELT card + Vulk */}
+          <div className="relative grid grid-cols-12 gap-6 md:gap-8 items-stretch rise-in" style={{ animationDelay: "0.4s" }}>
+            {/* AKTUELT card - desktop position */}
+            <a
+              href="#status og nyheder"
+              onClick={scrollToSection("status og nyheder")}
+              className="hidden lg:block col-span-3 self-center group"
+            >
+              <div className="paper-card p-7 relative overflow-hidden">
+                <div className="flex items-start justify-between mb-5">
+                  <span className="micro-label text-[var(--forest)]">
+                    ● Aktuelt
+                  </span>
+                  <span className="micro-label text-[var(--ink-4)]">Nyt</span>
+                </div>
+                <h3
+                  className="font-display text-3xl text-[var(--ink)] mb-3 leading-tight"
+                  style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+                >
+                  Status &amp; Nyheder
+                </h3>
+                <p className="text-sm leading-relaxed text-[var(--ink-2)] mb-4">
+                  Læs om det aktuelle der sker på Vulkanen Mors.
+                </p>
+                <span className="inline-flex items-center gap-2 micro-label text-[var(--ember-deep)] group-hover:gap-4 transition-all">
+                  Læs mere
+                  <span>→</span>
+                </span>
+              </div>
+            </a>
+
+            {/* Main photo */}
+            <div className="col-span-12 lg:col-span-9 relative">
+              <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden border border-[var(--rule)]">
                 <Image
                   src="/billeder/bestyrelse-foran-vulkanen.JPEG"
                   alt="Bestyrelsen foran Vulkanen"
                   fill
                   className="object-cover"
+                  priority
                 />
+                {/* Photo caption strip */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 md:p-6 flex items-end justify-between">
+                  <span className="micro-label text-white/80">
+                    Fig. 01 — Bestyrelsen
+                  </span>
+                  <span className="micro-label text-white/80 hidden sm:block">
+                    Ørding, Mors
+                  </span>
+                </div>
               </div>
-              {/* Vulk Keyring - bottom right corner, outside photo */}
+
+              {/* Vulk — bottom right, outside image */}
               <a
                 href="#vulk"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.getElementById('vulk');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
-                className="hidden md:block absolute -bottom-24 right-0 translate-x-1/2 group cursor-pointer z-10"
+                onClick={scrollToSection("vulk")}
+                className="hidden md:flex absolute -bottom-24 right-4 md:right-8 flex-col items-center group cursor-pointer z-10"
               >
-                {/* Vulk Image - tilted */}
                 <Image
                   src="/Vulk.png"
                   alt="Vulk nøglering"
-                  width={200}
-                  height={200}
-                  className="drop-shadow-lg rotate-[15deg] transition-transform duration-300 group-hover:scale-110"
+                  width={190}
+                  height={190}
+                  className="drop-shadow-xl rotate-[12deg] transition-all duration-500 group-hover:scale-110 group-hover:rotate-[4deg]"
                 />
-                {/* Text below Vulk */}
-                <div className="text-center mt-2 whitespace-nowrap">
-                  <span className="font-semibold text-gray-900 text-base">
-                    Køb en &ldquo;Vulk&rdquo; nøglering
+                <div className="relative -mt-3">
+                  <span className="micro-label text-[var(--ink)] bg-[var(--paper)] px-2 py-1 border border-[var(--rule)]">
+                    Køb en “Vulk” →
                   </span>
                 </div>
               </a>
             </div>
           </div>
 
-          {/* Call to Action Text */}
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
-            <h2 className="text-lg md:text-2xl lg:text-3xl font-semibold text-gray-900 max-w-4xl mx-auto leading-relaxed mb-8">
-              Din opbakning er vigtig​
-            </h2>
-            
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {/* Tegne Andel Button */}
-              <a
-                href="#stoet-vulkanen"
-                onClick={scrollToSupport}
-                className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
+          {/* AKTUELT card - mobile */}
+          <a
+            href="#status og nyheder"
+            onClick={scrollToSection("status og nyheder")}
+            className="block lg:hidden mt-8"
+          >
+            <div className="paper-card p-6 relative">
+              <div className="flex items-start justify-between mb-3">
+                <span className="micro-label text-[var(--forest)]">
+                  ● Aktuelt · Nyt
+                </span>
+              </div>
+              <h3
+                className="font-display text-2xl text-[var(--ink)] mb-2 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
               >
-                Støt Økonomisk
-              </a>
-              
-              {/* Book Vulkanen Button */}
-              <a
-                href="#book-vulkanen"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.getElementById('book-vulkanen');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
-                className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
+                Status &amp; Nyheder
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--ink-2)] mb-2">
+                Læs om det aktuelle der sker på Vulkanen Mors.
+              </p>
+              <span className="micro-label text-[var(--ember-deep)]">
+                Læs mere →
+              </span>
+            </div>
+          </a>
+
+          {/* CTA row */}
+          <div
+            className="mt-24 md:mt-32 rise-in"
+            style={{ animationDelay: "0.55s" }}
+          >
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 border-t border-[var(--rule)] pt-8">
+              <p
+                className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-[var(--ink)] max-w-xl text-balance"
+                style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 96' }}
               >
-                Book Vulkanen
-              </a>
-              
-              {/* Vision og Strategi Button */}
-              <a
-                href="/dokumenter/vulkanen-vision-stategi-pp.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#00a6c0] hover:bg-[#008ba3] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
-              >
-                Vision og Strategi
-              </a>
+                Din opbakning er{" "}
+                <em className="text-[var(--ember-deep)]">vigtig.</em>
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="#stoet-vulkanen"
+                  onClick={scrollToSection("stoet-vulkanen")}
+                  className="btn-ember"
+                >
+                  Støt Økonomisk
+                </a>
+                <a
+                  href="#book-vulkanen"
+                  onClick={scrollToSection("book-vulkanen")}
+                  className="btn-ghost"
+                >
+                  Book Vulkanen
+                </a>
+                <a
+                  href="/dokumenter/vulkanen-vision-stategi-pp.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                >
+                  Vision &amp; Strategi ↗
+                </a>
+              </div>
             </div>
           </div>
         </div>
-
-        {/* AKTUELT Event Card - Mobile only */}
-        <div className="block md:hidden mx-auto px-4 py-4">
-          <a
-            href="#status og nyheder"
-            onClick={scrollToStatusNyheder}
-            className="block group"
-          >
-            {/* Event Details Card with Circle */}
-            <div className="relative bg-white rounded-lg shadow-xl p-6 max-w-xs border-l-4 border-[#ff904b] transform transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
-              {/* Green Animated Circle - Top Right Corner */}
-              <div className="absolute -top-2 -right-2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse-enhanced"></div>
-               
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
-                Status & Nyheder
-              </h3>
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-3">
-                Læs om det aktuelle der sker på Vulkanen Mors
-              </p>
-              <div className="text-[#ff904b] font-semibold text-base flex items-center">
-                <span>Læs mere</span>
-                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="hidden md:flex justify-center py-4 mt-auto animate-bounce">
-          <svg
-            className="w-6 h-6 text-gray-400"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
       </section>
 
-      {/* Status & Nyheder Section */}
+      {/* ============================== MARQUEE ============================== */}
+      <div className="relative border-y border-[var(--rule)] bg-[var(--paper-2)] py-5 overflow-hidden">
+        <div className="marquee gap-10 text-[var(--ink)]">
+          {Array.from({ length: 2 }).map((_, k) => (
+            <div key={k} className="flex items-center gap-10 pr-10">
+              {[
+                "Fællesskab",
+                "Kreativitet",
+                "Bevægelse",
+                "Lokalsamfund",
+                "VÆRKsted",
+                "Velo Mors",
+                "Ørding",
+                "Et nyt kapitel",
+              ].map((word, i) => (
+                <span key={`${k}-${i}`} className="flex items-center gap-10">
+                  <span
+                    className="font-display italic text-3xl md:text-5xl whitespace-nowrap"
+                    style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 144' }}
+                  >
+                    {word}
+                  </span>
+                  <span className="ornament text-3xl md:text-4xl not-italic">✦</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ============================== STATUS & NYHEDER ============================== */}
       <Section
         id="status og nyheder"
         title="Status & Nyheder"
         subtitle="Hvor er vi i processen?"
-        className="bg-white"
+        numeral="§ 02"
+        kicker="Aktuelt"
       >
-        {/* Nyhedsbrev 2 - 15-01-2026 */}
-        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
-          {/* NEW Badge */}
-          <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-enhanced">
-            NYT
+        {/* Nyhedsbrev 2 */}
+        <article className="paper-card p-6 sm:p-8 md:p-10 relative">
+          <div className="absolute -top-3 right-6">
+            <span className="inline-flex items-center gap-2 bg-[var(--ember)] text-[var(--ink)] px-3 py-1 micro-label border border-[var(--ink)]">
+              ● Nyt
+            </span>
           </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Nyhedsbrev 2 - 15. januar 2026</h3>
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Læs det seneste nyhedsbrev fra Vulkanen Mors med opdateringer om foreningens aktiviteter og fremtidsplaner.
-          </p>
-          <div className="flex justify-end">
-            <a
-              href="/dokumenter/Vulkanen - nyhedsbrev 2 - 15-01-2025.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-            >
-              <span className="flex items-center">
-                Læs mere
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </a>
-          </div>
-        </div>
-
-        {/* Vedtægter Vulkanen Mors */}
-        <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
-          {/* For Nyligt Badge */}
-          <div className="absolute -top-3 -right-3 bg-gradient-to-br from-yellow-400 to-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-            For Nyligt
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Vedtægter Vulkanen Mors</h3>
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Læs foreningens vedtægter og få indblik i formål, medlemskab, bestyrelse og meget mere.
-          </p>
-          <div className="flex justify-end">
-            <a
-              href="/dokumenter/vedtægter-vulkanen.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-            >
-              <span className="flex items-center">
-                Læs mere
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </a>
-          </div>
-        </div>
-
-        {/* General Status */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500 mb-6">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Andel Status</h3>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            Vi er i gang med at samle opbakning og tegne andele. Følg med her for opdateringer om projektets fremskridt.
-          </p>
-        </div>
-
-        {/* Toggle Button for Older News */}
-        <div className="text-center mb-6">
-          <button
-            onClick={() => setShowOlderNews(!showOlderNews)}
-            className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-base px-6 py-3 rounded-lg shadow-sm transition-all duration-300 transform hover:scale-105"
-          >
-            <span>{showOlderNews ? 'Skjul' : 'Læs'} tidligere nyheder og information</span>
-            <svg
-              className={`w-5 h-5 transition-transform duration-300 ${showOlderNews ? 'rotate-180' : ''}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Collapsible Older News Section */}
-        <div
-          className={`transition-all duration-500 ease-in-out ${
-            showOlderNews ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-          }`}
-        >
-          {/* Latest News */}
-          <div className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
-            {/* For Nyligt Badge */}
-            <div className="absolute -top-3 -right-3 bg-gradient-to-br from-yellow-400 to-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-              For Nyligt
+          <div className="grid grid-cols-12 gap-6 items-start">
+            <div className="col-span-12 md:col-span-3">
+              <Kicker color="var(--ember)">Nyhedsbrev №02</Kicker>
+              <p className="micro-label text-[var(--ink-4)]">
+                15 · 01 · 2026
+              </p>
             </div>
-            
-            <div className="flex items-start justify-between mb-4">
-              <h3 className="text-2xl font-bold text-gray-900">Velkommen til Vulkanen!</h3>
-              <span className="text-sm text-gray-500 whitespace-nowrap ml-4">15. november 2024</span>
-            </div>
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              Vulkanen slår dørene op på vid gab og byder alle velkommen. Styregruppen for etableringen ser frem til stiftende generalforsamling for Vulkanen Mors mandag den 24/11. Kom og være med, begynder med fællesspisning kl. 17.30. Her er plads til alle ideer og forslag der kan skabe liv og fællesskab i disse fantastiske rammer der nu er i borgernes hænder.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed italic">
-              Vi ses
-            </p>
-            <p className="text-base text-gray-600 mt-2">
-              - Johannes Jørgensen
-            </p>
-          </div>
-
-          {/* Fællesspisning Event */}
-          <div id="faellesspisning" className="relative bg-white rounded-lg p-8 shadow-sm border-l-4 border-teal-500 mb-6">
-            {/* For Nyligt Badge */}
-            <div className="absolute -top-3 -right-3 bg-gradient-to-br from-yellow-400 to-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-              For Nyligt
-            </div>
-            
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Fællesspisning den 24/11</h3>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Vi skal fejre, at vi i fællesskab har købt Friskolens bygninger. - <strong>Vulkanen er tændt!</strong>
-            </p>
-            <div className="flex justify-end">
+            <div className="col-span-12 md:col-span-9">
+              <h3
+                className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-4 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+              >
+                Nyhedsbrev 2 — 15. januar 2026
+              </h3>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-6 max-w-2xl">
+                Læs det seneste nyhedsbrev fra Vulkanen Mors med opdateringer
+                om foreningens aktiviteter og fremtidsplaner.
+              </p>
               <a
-                href="/dokumenter/fællesspisning-24-nov.pdf"
+                href="/dokumenter/Vulkanen - nyhedsbrev 2 - 15-01-2025.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                className="btn-ember"
               >
-                <span className="flex items-center">
-                  Læs mere
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
+                Læs mere ↗
               </a>
             </div>
           </div>
+        </article>
+
+        {/* Vedtægter */}
+        <article className="paper-card p-6 sm:p-8 md:p-10 relative">
+          <div className="grid grid-cols-12 gap-6 items-start">
+            <div className="col-span-12 md:col-span-3">
+              <Kicker color="var(--sky)">Dokument</Kicker>
+              <p className="micro-label text-[var(--ink-4)]">For nyligt</p>
+            </div>
+            <div className="col-span-12 md:col-span-9">
+              <h3
+                className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-4 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+              >
+                Vedtægter Vulkanen Mors
+              </h3>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-6 max-w-2xl">
+                Læs foreningens vedtægter og få indblik i formål, medlemskab,
+                bestyrelse og meget mere.
+              </p>
+              <a
+                href="/dokumenter/vedtægter-vulkanen.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+              >
+                Læs mere ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+        {/* Andel Status */}
+        <article className="paper-card p-6 sm:p-8 md:p-10">
+          <div className="grid grid-cols-12 gap-6 items-start">
+            <div className="col-span-12 md:col-span-3">
+              <Kicker color="var(--moss)">Status</Kicker>
+            </div>
+            <div className="col-span-12 md:col-span-9">
+              <h3
+                className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-4 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+              >
+                Andel Status
+              </h3>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed max-w-2xl">
+                Vi er i gang med at samle opbakning og tegne andele. Følg med
+                her for opdateringer om projektets fremskridt.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        {/* Toggle */}
+        <div className="flex justify-center pt-4">
+          <button
+            onClick={() => setShowOlderNews(!showOlderNews)}
+            className="group inline-flex items-center gap-3 micro-label text-[var(--ink-2)] border-b border-[var(--ink-3)] pb-1 hover:text-[var(--ember-deep)] hover:border-[var(--ember-deep)] transition-colors"
+          >
+            <span>{showOlderNews ? "Skjul" : "Læs"} tidligere nyheder</span>
+            <span
+              className={`transition-transform duration-500 ${
+                showOlderNews ? "rotate-180" : ""
+              }`}
+            >
+              ↓
+            </span>
+          </button>
+        </div>
+
+        <div
+          className={`transition-all duration-700 ease-out space-y-8 ${
+            showOlderNews
+              ? "max-h-[4000px] opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+        >
+          <article className="paper-card p-6 sm:p-8 md:p-10">
+            <div className="grid grid-cols-12 gap-6 items-start">
+              <div className="col-span-12 md:col-span-3">
+                <Kicker color="var(--ember)">Arkiv</Kicker>
+                <p className="micro-label text-[var(--ink-4)]">
+                  15 · 11 · 2024
+                </p>
+              </div>
+              <div className="col-span-12 md:col-span-9">
+                <h3
+                  className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-4 leading-tight"
+                  style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+                >
+                  Velkommen til Vulkanen!
+                </h3>
+                <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-4 max-w-2xl drop-cap">
+                  Vulkanen slår dørene op på vid gab og byder alle velkommen.
+                  Styregruppen for etableringen ser frem til stiftende
+                  generalforsamling for Vulkanen Mors mandag den 24/11. Kom og
+                  være med, begynder med fællesspisning kl. 17.30. Her er
+                  plads til alle ideer og forslag der kan skabe liv og
+                  fællesskab i disse fantastiske rammer der nu er i borgernes
+                  hænder.
+                </p>
+                <p className="font-display italic text-xl text-[var(--ink-2)] mb-1">
+                  Vi ses
+                </p>
+                <p className="micro-label text-[var(--ink-3)]">
+                  — Johannes Jørgensen
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article
+            id="faellesspisning"
+            className="paper-card p-6 sm:p-8 md:p-10"
+          >
+            <div className="grid grid-cols-12 gap-6 items-start">
+              <div className="col-span-12 md:col-span-3">
+                <Kicker color="var(--sky)">Begivenhed</Kicker>
+                <p className="micro-label text-[var(--ink-4)]">Arkiv</p>
+              </div>
+              <div className="col-span-12 md:col-span-9">
+                <h3
+                  className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-4 leading-tight"
+                  style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+                >
+                  Fællesspisning den 24/11
+                </h3>
+                <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-6 max-w-2xl">
+                  Vi skal fejre, at vi i fællesskab har købt Friskolens
+                  bygninger. — <strong>Vulkanen er tændt!</strong>
+                </p>
+                <a
+                  href="/dokumenter/fællesspisning-24-nov.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                >
+                  Læs mere ↗
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
       </Section>
 
-      {/* Finansieringsplan Section */}
+      {/* ============================== FINANSIERINGSPLAN ============================== */}
       <Section
         id="finansieringsplan"
         title="Finansieringsplan"
         subtitle="Det bliver centralt at sikre en overgangsperiode på op til 2 år mens visionen formes og realiseres."
-        className="bg-gray-50"
+        numeral="§ 03"
+        kicker="Økonomi"
+        variant="paper-2"
       >
-        {/* Finansieringsmodel */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b]">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Finansieringsmodel</h3>
-          <ul className="space-y-3 text-gray-700 text-lg">
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Ørding Medborgerhus Aps overtager bygningerne</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Vulkanen Mors lejer bygningerne</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Man kan støtte med lån i klumper af 2.500 kroner</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Fordele og Udfordringer */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Fordele */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-t-4 border-green-500">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Fordele</h3>
-            <ul className="space-y-3 text-gray-700 text-lg">
-              <li className="flex items-start">
-                <span className="text-green-500 mr-3 text-2xl font-bold">+</span>
-                <span>Lokal handlekraft og frihed</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 mr-3 text-2xl font-bold">+</span>
-                <span>Sponsorater og anparter kan inddrages</span>
-              </li>
-            </ul>
+        {/* Model */}
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
+          <div className="col-span-12 lg:col-span-7">
+            <PaperCard className="h-full">
+              <Kicker color="var(--ember-deep)">Model</Kicker>
+              <h3
+                className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-6 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+              >
+                Finansieringsmodel
+              </h3>
+              <BulletList
+                glyph="▲"
+                color="var(--ember-deep)"
+                items={[
+                  "Ørding Medborgerhus Aps overtager bygningerne",
+                  "Vulkanen Mors lejer bygningerne",
+                  <>
+                    Man kan støtte med lån i klumper af{" "}
+                    <strong className="text-[var(--ink)]">2.500 kroner</strong>
+                  </>,
+                ]}
+              />
+            </PaperCard>
           </div>
 
-          {/* Udfordringer */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-t-4 border-amber-500">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Udfordringer</h3>
-            <ul className="space-y-3 text-gray-700 text-lg">
-              <li className="flex items-start">
-                <span className="text-amber-500 mr-3 text-2xl font-bold">-</span>
-                <span>Kræver kapital og driftssikring i 2 år</span>
-              </li>
-            </ul>
+          <div className="col-span-12 lg:col-span-5 grid gap-6 md:gap-8">
+            <PaperCard>
+              <Kicker color="var(--forest)">Fordele</Kicker>
+              <h3
+                className="font-display text-2xl md:text-3xl text-[var(--ink)] mb-5 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                Fordele
+              </h3>
+              <BulletList
+                glyph="+"
+                color="var(--forest)"
+                items={[
+                  "Lokal handlekraft og frihed",
+                  "Sponsorater og anparter kan inddrages",
+                ]}
+              />
+            </PaperCard>
+
+            <PaperCard>
+              <Kicker color="var(--berry)">Udfordringer</Kicker>
+              <h3
+                className="font-display text-2xl md:text-3xl text-[var(--ink)] mb-5 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                Udfordringer
+              </h3>
+              <BulletList
+                glyph="−"
+                color="var(--berry)"
+                items={["Kræver kapital og driftssikring i 2 år"]}
+              />
+            </PaperCard>
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-8">
-          <p className="text-xl md:text-2xl text-gray-700 mb-6">
-            Kontakt Bestyrelsen – og tegn anparter. Så støtter du finansieringsplanen
+        {/* CTA banner */}
+        <div className="relative mt-12 border-t border-b border-[var(--ink)] py-12 md:py-16 text-center">
+          <span className="ornament text-4xl absolute -top-6 left-1/2 -translate-x-1/2 bg-[var(--paper-2)] px-4">
+            ✦
+          </span>
+          <p
+            className="font-display text-2xl md:text-4xl lg:text-5xl text-[var(--ink)] max-w-4xl mx-auto leading-[1.1] text-balance mb-8"
+            style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 144' }}
+          >
+            Kontakt Bestyrelsen — og tegn anparter.
+            <br />
+            <em className="text-[var(--ember-deep)]">
+              Så støtter du finansieringsplanen.
+            </em>
           </p>
           <a
             href="#stoet-vulkanen"
-            onClick={scrollToSupport}
-            className="inline-block bg-[#ff904b] hover:bg-[#e67d3a] text-white font-semibold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md cursor-pointer"
+            onClick={scrollToSection("stoet-vulkanen")}
+            className="btn-ember"
           >
-            Støt økonomisk
+            Støt Økonomisk
           </a>
         </div>
       </Section>
 
-      {/* VÆRKsted Section */}
+      {/* ============================== VÆRKSTED ============================== */}
       <Section
         id="vaerksted"
         title="VÆRKsted"
-        subtitle="Et fristed for skabende mennesker - Især børn og unge"
-        className="bg-gray-50"
+        subtitle="Et fristed for skabende mennesker — især børn og unge."
+        numeral="§ 04"
+        kicker="Spor A"
       >
-        {/* Kerneidéer and Image - Side by Side */}
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          {/* Værk Image - First on mobile, second on desktop */}
-          <div className="flex items-center justify-center md:order-2">
-            <div className="relative w-full h-64 md:h-full">
-              <Image
-                src="/værk-hvid.png"
-                alt="Værk logo"
-                fill
-                className="object-contain"
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
+          {/* Core ideas */}
+          <div className="col-span-12 lg:col-span-7 order-2 lg:order-1">
+            <PaperCard className="h-full">
+              <Kicker color="var(--ember)">Kerneidéer</Kicker>
+              <h3
+                className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-6 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+              >
+                Kerneidéer
+              </h3>
+              <BulletList
+                glyph="◆"
+                color="var(--ember-deep)"
+                items={[
+                  "Plads til dem der falder udenfor traditionelle læringsrum",
+                  "Fokus på proces frem for præstation",
+                  "Kreativitet som vej til styrke, tilhørighed og udvikling",
+                ]}
               />
+            </PaperCard>
+          </div>
+
+          {/* Image */}
+          <div className="col-span-12 lg:col-span-5 order-1 lg:order-2">
+            <div className="relative h-full min-h-[260px] border border-[var(--rule)] bg-[var(--paper-3)]/30 p-8 flex items-center justify-center overflow-hidden">
+              <div className="absolute top-3 left-3 micro-label text-[var(--ink-3)]">
+                Fig. A · Værksted
+              </div>
+              <div className="relative w-full h-64 md:h-80">
+                <Image
+                  src="/værk-hvid.png"
+                  alt="Værk logo"
+                  fill
+                  className="object-contain rumble"
+                />
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Kerneidéer - Second on mobile, first on desktop */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] md:order-1">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
-            <ul className="space-y-3 text-gray-700 text-lg">
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Plads til dem der falder udenfor traditionelle læringsrum</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Fokus på proces frem for præstation</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Kreativitet som vej til styrke, tilhørighed og udvikling</span>
-            </li>
-            </ul>
+        {/* Mål & Finansiering */}
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
+          <div className="col-span-12 md:col-span-6">
+            <PaperCard accent="var(--forest)">
+              <Kicker color="var(--forest)">Mål</Kicker>
+              <h4
+                className="font-display text-2xl md:text-3xl text-[var(--ink)] mb-4 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                Mål
+              </h4>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed">
+                At skabe et sted, hvor kreativitet og forskellighed bliver
+                styrker — og hvor relationer og identitet kan vokse i takt med
+                de kunstneriske udtryk.
+              </p>
+            </PaperCard>
+          </div>
+          <div className="col-span-12 md:col-span-6">
+            <PaperCard accent="var(--sky)">
+              <Kicker color="var(--sky)">Finansieringspotentiale</Kicker>
+              <h4
+                className="font-display text-2xl md:text-3xl text-[var(--ink)] mb-4 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                Finansieringspotentiale
+              </h4>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed">
+                Fonde der støtter social inklusion, læring og kreativ udvikling
+                (fx Spar Nord, Egmont, Nordea-fonden).
+              </p>
+            </PaperCard>
           </div>
         </div>
 
-        {/* Mål and Finansieringspotentiale - Side by Side */}
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          {/* Mål */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-green-500">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Mål</h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              At skabe et sted, hvor kreativitet og forskellighed bliver styrker – og hvor relationer og identitet kan vokse i takt med de kunstneriske udtryk.
-            </p>
+        {/* Konkrete elementer */}
+        <PaperCard>
+          <Kicker color="var(--berry)">Konkrete elementer &amp; synergier</Kicker>
+          <h3
+            className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-8 leading-tight"
+            style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+          >
+            Konkrete elementer <em className="italic text-[var(--berry)]">og</em>{" "}
+            synergier
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5">
+            {[
+              "Kreative værksteder: keramik, tekstil, billedkunst, musik, digitalt design",
+              "Øvelokaler og teatermiljø",
+              "Rå og upolerede rammer til eksperimenterende kunst og formidling",
+              "Uderum med bålplads, kunsthaver, sansestier og lydkunst i naturen",
+              "Workshops og kreative lejrskoler (fx Farv med planter, Lyde fra skoven)",
+              "Udstillinger, events og festivaler – kreative i naturen",
+              "Udlejning af rum og samarbejde med kunstnere, skoler og sociale aktører",
+              "Overnatningsmuligheder for større grupper",
+              "Samarbejde med Ørding Købmandsgaard om forplejning",
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-4 py-3 border-t border-[var(--rule)]/60">
+                <span className="font-mono text-[0.7rem] tabular-nums text-[var(--ink-4)] pt-1.5">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base md:text-lg leading-relaxed text-[var(--ink-2)] text-pretty flex-1">
+                  {item}
+                </span>
+              </div>
+            ))}
           </div>
-
-          {/* Finansieringspotentiale */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Finansieringspotentiale</h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Fonde der støtter social inklusion, læring og kreativ udvikling (fx Spar Nord, Egmont, Nordea-fonden).
-            </p>
-          </div>
-        </div>
-
-        {/* Konkrete elementer og synergier */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-purple-500">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Konkrete elementer og synergier</h3>
-          <ul className="space-y-3 text-gray-700 text-lg">
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Kreative værksteder: keramik, tekstil, billedkunst, musik, digitalt design</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Øvelokaler og teatermiljø</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Rå og upolerede rammer til eksperimenterende kunst og formidling</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Uderum med bålplads, kunsthaver, sansestier og lydkunst i naturen</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Workshops og kreative lejrskoler (fx Farv med planter, Lyde fra skoven)</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Udstillinger, events og festivaler – kreative i naturen</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Udlejning af rum og samarbejde med kunstnere, skoler og sociale aktører</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Overnatningsmuligheder for større grupper</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Samarbejde med Ørding Købmandsgaard om forplejning</span>
-            </li>
-          </ul>
-        </div>
+        </PaperCard>
       </Section>
 
-      {/* Velo Mors Section */}
+      {/* ============================== VELO MORS ============================== */}
       <Section
         id="velo-mors"
         title="Velo Mors"
-        subtitle="Et cykelunivers i bevægelse"
-        className="bg-white"
+        subtitle="Et cykelunivers i bevægelse."
+        numeral="§ 05"
+        kicker="Spor B"
+        variant="paper-2"
       >
-        {/* Kerneidéer and Image - Side by Side */}
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          {/* Velo Mors Image - First on mobile, second on desktop */}
-          <div className="flex items-center justify-center md:order-2">
-            <div className="relative w-full h-64 md:h-full">
-              <Image
-                src="/velo-mors-hvid.png"
-                alt="Velo Mors logo"
-                fill
-                className="object-contain"
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
+          <div className="col-span-12 lg:col-span-7 order-2 lg:order-1">
+            <PaperCard className="h-full">
+              <Kicker color="var(--sky)">Kerneidéer</Kicker>
+              <h3
+                className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-6 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+              >
+                Kerneidéer
+              </h3>
+              <BulletList
+                glyph="◐"
+                color="var(--sky)"
+                items={[
+                  "Cyklen som adgang til naturen og lokalt fællesskab",
+                  "Aktiviteter for alle niveauer og aldre",
+                  "Bevægelse som socialt og sanseligt anker",
+                ]}
               />
+            </PaperCard>
+          </div>
+
+          <div className="col-span-12 lg:col-span-5 order-1 lg:order-2">
+            <div className="relative h-full min-h-[260px] border border-[var(--rule)] bg-[var(--paper-3)]/30 p-8 flex items-center justify-center">
+              <div className="absolute top-3 left-3 micro-label text-[var(--ink-3)]">
+                Fig. B · Velo Mors
+              </div>
+              <div className="relative w-full h-64 md:h-80">
+                <Image
+                  src="/velo-mors-hvid.png"
+                  alt="Velo Mors logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Kerneidéer - Second on mobile, first on desktop */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] md:order-1">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Kerneidéer</h3>
-            <ul className="space-y-3 text-gray-700 text-lg">
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Cyklen som adgang til naturen og lokalt fællesskab</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Aktiviteter for alle niveauer og aldre</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#ff904b] mr-3 mt-1">•</span>
-              <span>Bevægelse som socialt og sanseligt anker</span>
-            </li>
-            </ul>
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
+          <div className="col-span-12 md:col-span-6">
+            <PaperCard accent="var(--forest)">
+              <Kicker color="var(--forest)">Mål</Kicker>
+              <h4
+                className="font-display text-2xl md:text-3xl text-[var(--ink)] mb-4 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                Mål
+              </h4>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed">
+                At skabe et fysisk og socialt rum, hvor mennesker samles om
+                bevægelse og naturoplevelser — og hvor det handler om at være
+                sammen på vej, ikke hurtigst.
+              </p>
+            </PaperCard>
+          </div>
+          <div className="col-span-12 md:col-span-6">
+            <PaperCard accent="var(--moss)">
+              <Kicker color="var(--moss)">Finansieringspotentiale</Kicker>
+              <h4
+                className="font-display text-2xl md:text-3xl text-[var(--ink)] mb-4 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                Finansieringspotentiale
+              </h4>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed">
+                Støtte fra fonde der prioriterer friluftsliv, fællesskab og
+                lokaludvikling (fx Nordea-fonden).
+              </p>
+            </PaperCard>
           </div>
         </div>
 
-        {/* Mål and Finansieringspotentiale - Side by Side */}
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          {/* Mål */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-green-500">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Mål</h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              At skabe et fysisk og socialt rum, hvor mennesker samles om bevægelse og naturoplevelser – og hvor det handler om at være sammen på vej, ikke hurtigst.
-            </p>
+        <PaperCard>
+          <Kicker color="var(--berry)">Konkrete elementer &amp; synergier</Kicker>
+          <h3
+            className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-8 leading-tight"
+            style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+          >
+            Konkrete elementer <em className="italic text-[var(--berry)]">og</em>{" "}
+            synergier
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5">
+            {[
+              "Udlejning af mange typer cykler (elcykler, gravelbikes, børnecykler m.m.)",
+              "Guidede ture og temaruter (fx Cykel + Fjordtur, Cykel + Bålmad)",
+              "Tekniktræning, unicycling, cykelværksted og opbevaring",
+              "Lejrskolepakker med kombination af cykling, læring og naturformidling",
+              "Overnatningsmuligheder for større grupper",
+              "Samarbejde med Ørding Købmandsgaard om forplejning",
+              "Fællesspisning, events og festivaler – fx Tour de Kultur",
+              "Trafiklegeplads til børn",
+              "Mulighed for udvikling af VELO-brand og merchandise",
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-4 py-3 border-t border-[var(--rule)]/60">
+                <span className="font-mono text-[0.7rem] tabular-nums text-[var(--ink-4)] pt-1.5">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base md:text-lg leading-relaxed text-[var(--ink-2)] text-pretty flex-1">
+                  {item}
+                </span>
+              </div>
+            ))}
           </div>
-
-          {/* Finansieringspotentiale */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-blue-500">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Finansieringspotentiale</h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Støtte fra fonde der prioriterer friluftsliv, fællesskab og lokaludvikling (fx Nordea-fonden).
-            </p>
-          </div>
-        </div>
-
-        {/* Konkrete elementer og synergier */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-purple-500">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Konkrete elementer og synergier</h3>
-          <ul className="space-y-3 text-gray-700 text-lg">
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Udlejning af mange typer cykler (elcykler, gravelbikes, børnecykler m.m.)</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Guidede ture og temaruter (fx Cykel + Fjordtur, Cykel + Bålmad)</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Tekniktræning, unicycling, cykelværksted og opbevaring</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Lejrskolepakker med kombination af cykling, læring og naturformidling</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Overnatningsmuligheder for større grupper</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Samarbejde med Ørding Købmandsgaard om forplejning</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Fællesspisning, events og festivaler – fx Tour de Kultur</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Trafiklegeplads til børn</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-500 mr-3 mt-1">•</span>
-              <span>Mulighed for udvikling af VELO-brand og merchandise</span>
-            </li>
-          </ul>
-        </div>
+        </PaperCard>
       </Section>
 
-      {/* Værdier Section */}
+      {/* ============================== VÆRDIER ============================== */}
       <Section
         id="vaerdier"
         title="Værdier"
-        subtitle="Uanset hvilken retning vi bevæger os i, er der enighed om nogle centrale værdier og hensyn​"
-        className="bg-gray-50"
+        subtitle="Uanset hvilken retning vi bevæger os i, er der enighed om nogle centrale værdier og hensyn."
+        numeral="§ 06"
+        kicker="Fundament"
+        variant="ink"
       >
-        {/* Introductory Text */}
-        <div className="bg-white rounded-lg p-8 shadow-sm mb-8">
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            Området skal være et levende møde- og lærested, der rummer mennesker på tværs af alder og baggrund.​
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            Tilhørighed og samskabelse er fundamentet for både aktiviteter, drift og stemning.​
-          </p>
+        {/* Lead text */}
+        <div className="grid grid-cols-12 gap-6 md:gap-8 mb-8">
+          <div className="col-span-12 md:col-span-6">
+            <p className="font-display text-2xl md:text-3xl leading-[1.15] text-[var(--paper)] text-balance drop-cap"
+               style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}>
+              Området skal være et levende møde- og lærested, der rummer
+              mennesker på tværs af alder og baggrund.
+            </p>
+          </div>
+          <div className="col-span-12 md:col-span-6 md:pl-8 md:border-l md:border-[var(--paper-3)]/20">
+            <p className="font-display text-2xl md:text-3xl leading-[1.15] text-[var(--paper-3)] italic text-balance"
+               style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 72' }}>
+              Tilhørighed og samskabelse er fundamentet for både aktiviteter,
+              drift og stemning.
+            </p>
+          </div>
         </div>
 
-        {/* Values Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Tilgængelighed</h3>
-            <p className="text-gray-700">
-              Aktiviteter og udstyr skal være familievenlige og imødekommende – både fysisk og socialt.​
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Bevarelse af udearealer</h3>
-            <p className="text-gray-700">
-              Legepladsen og de grønne områder omkring skolen skal bevares og være en integreret del af visionen – som rum for leg, læring og samvær.​
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Bevarelse af aktiviteter</h3>
-            <p className="text-gray-700">
-              Skolen rummer i dag mange foreninger og aktiviteter, disse skal bevares og få den plads og rum der er brug for, så vi sikrer et ligeså godt tilbud til byens børn og voksne.​
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Nærhed til naturen</h3>
-            <p className="text-gray-700">
-              Den særlige placering tæt på fjord, skov og strand skal udnyttes aktivt til oplevelser og som identitetsskabende element.​
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Lokal forankring</h3>
-            <p className="text-gray-700">
-              Visionerne skal udvikles i samarbejde og bygger på ønsket om at bevare liv og aktivitet i Ørding og omegn.​
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b]">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Bæredygtighed – også økonomisk</h3>
-            <p className="text-gray-700">
-              Bæredygtighed sikres gennem så vidt mulig genbrug, rene råvarer og et princip om gældsfrihed.​
-            </p>
-          </div>
+        {/* Values grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--paper-3)]/20 border border-[var(--paper-3)]/20">
+          {[
+            {
+              title: "Tilgængelighed",
+              body: "Aktiviteter og udstyr skal være familievenlige og imødekommende — både fysisk og socialt.",
+            },
+            {
+              title: "Bevarelse af udearealer",
+              body: "Legepladsen og de grønne områder omkring skolen skal bevares og være en integreret del af visionen — som rum for leg, læring og samvær.",
+            },
+            {
+              title: "Bevarelse af aktiviteter",
+              body: "Skolen rummer i dag mange foreninger og aktiviteter, disse skal bevares og få den plads og rum der er brug for, så vi sikrer et ligeså godt tilbud til byens børn og voksne.",
+            },
+            {
+              title: "Nærhed til naturen",
+              body: "Den særlige placering tæt på fjord, skov og strand skal udnyttes aktivt til oplevelser og som identitetsskabende element.",
+            },
+            {
+              title: "Lokal forankring",
+              body: "Visionerne skal udvikles i samarbejde og bygger på ønsket om at bevare liv og aktivitet i Ørding og omegn.",
+            },
+            {
+              title: "Bæredygtighed — også økonomisk",
+              body: "Bæredygtighed sikres gennem så vidt mulig genbrug, rene råvarer og et princip om gældsfrihed.",
+            },
+          ].map((v, i) => (
+            <div
+              key={i}
+              className="group relative bg-[var(--ink)] p-8 md:p-10 transition-colors duration-500 hover:bg-[var(--ink-2)]"
+            >
+              <div className="flex items-start gap-4 mb-5">
+                <span className="font-mono text-xs tabular-nums text-[var(--paper-3)]/50">
+                  {String(i + 1).padStart(2, "0")} / 06
+                </span>
+                <span className="ornament text-lg not-italic text-[var(--ember)] opacity-0 group-hover:opacity-100 transition-opacity">
+                  ✦
+                </span>
+              </div>
+              <h3
+                className="font-display text-2xl md:text-3xl text-[var(--paper)] mb-4 leading-tight group-hover:italic transition-all"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                {v.title}
+              </h3>
+              <p className="text-base leading-relaxed text-[var(--paper-3)]">
+                {v.body}
+              </p>
+            </div>
+          ))}
         </div>
       </Section>
 
-      {/* Book Vulkanen Section */}
+      {/* ============================== BOOK VULKANEN ============================== */}
       <Section
         id="book-vulkanen"
         title="Book Vulkanen"
-        subtitle="Book Vulkanen til din event"
-        className="bg-white"
+        subtitle="Book Vulkanen til din event."
+        numeral="§ 07"
+        kicker="Udlejning"
       >
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#ff904b] mb-6">
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 text-center">
-            Ønsker du at booke lokaler i Vulkanen så kontakt Johannes Jørgensen
-          </p>
+        <PaperCard>
+          <div className="text-center mb-10">
+            <p
+              className="font-display text-2xl md:text-4xl text-[var(--ink)] leading-[1.15] max-w-3xl mx-auto text-balance"
+              style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 96' }}
+            >
+              Ønsker du at booke lokaler i Vulkanen —{" "}
+              <em className="text-[var(--ember-deep)]">
+                så kontakt Johannes Jørgensen.
+              </em>
+            </p>
+          </div>
 
-          {/* Contact Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* Johannes Contact Card */}
-            <div className="bg-gray-50 rounded-lg p-6 shadow-sm border-l-4 border-green-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="text-sm font-semibold text-green-500 mb-2">Kasserer</div>
-              <div className="text-2xl font-bold text-gray-900 mb-3">Johannes Jørgensen</div>
-              <div className="text-lg text-gray-700 mb-2">
-                <strong>Tlf:</strong> 23 39 46 41
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div className="border border-[var(--rule)] p-6 md:p-8 bg-[var(--paper-2)]/40 transition-all hover:bg-[var(--paper-2)]">
+              <div className="flex items-center justify-between mb-4">
+                <span className="micro-label text-[var(--forest)]">
+                  ● Kasserer
+                </span>
+                <span className="micro-label text-[var(--ink-4)]">Kontakt</span>
               </div>
-              <div className="text-lg text-gray-700">
-                <strong>E-mail:</strong>{" "}
-                <a href="mailto:Minna.Johannes61@gmail.com" className="text-green-500 hover:underline">
-                  Minna.Johannes61@gmail.com
-                </a>
+              <h4
+                className="font-display text-3xl text-[var(--ink)] mb-5 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                Johannes Jørgensen
+              </h4>
+              <div className="space-y-2 text-base">
+                <p className="text-[var(--ink-2)]">
+                  <span className="micro-label text-[var(--ink-4)] mr-2">Tlf</span>
+                  23 39 46 41
+                </p>
+                <p className="text-[var(--ink-2)]">
+                  <span className="micro-label text-[var(--ink-4)] mr-2">Email</span>
+                  <a
+                    href="mailto:Minna.Johannes61@gmail.com"
+                    className="link-reveal text-[var(--forest)]"
+                  >
+                    Minna.Johannes61@gmail.com
+                  </a>
+                </p>
               </div>
             </div>
 
-            {/* Address Card */}
-            <div className="bg-gray-50 rounded-lg p-6 shadow-sm border-l-4 border-[#00a6c0] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="text-sm font-semibold text-[#00a6c0] mb-2">Lokation</div>
-              <div className="text-2xl font-bold text-gray-900 mb-3">Adresse</div>
-              <div className="text-lg text-gray-700 mb-2">
-                Skolesvinget 9
+            <div className="border border-[var(--rule)] p-6 md:p-8 bg-[var(--paper-2)]/40 transition-all hover:bg-[var(--paper-2)]">
+              <div className="flex items-center justify-between mb-4">
+                <span className="micro-label text-[var(--sky)]">
+                  ● Lokation
+                </span>
+                <span className="micro-label text-[var(--ink-4)]">Adresse</span>
               </div>
-              <div className="text-lg text-gray-700">
-                7990 Øster Assels
+              <h4
+                className="font-display text-3xl text-[var(--ink)] mb-5 leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                Skolesvinget 9
+              </h4>
+              <div className="space-y-2 text-base">
+                <p className="text-[var(--ink-2)]">7990 Øster Assels</p>
+                <p className="text-[var(--ink-4)] micro-label">Mors · Danmark</p>
               </div>
             </div>
           </div>
-        </div>
+        </PaperCard>
 
-        {/* Gymnastiksalens Aktiviteter */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border-l-4 border-[#00a6c0] mt-6">
-          <h3 className="text-2xl font-bold text-gray-900 mb-1">Gymnastiksalens Aktiviteter</h3>
-          <p className="text-gray-500 mb-6">Ugentligt skema for faste aktiviteter i gymnastiksalen</p>
+        {/* Gymnastiksalens aktiviteter */}
+        <PaperCard>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+            <div>
+              <Kicker color="var(--sky)">Skema</Kicker>
+              <h3
+                className="font-display text-3xl md:text-4xl text-[var(--ink)] leading-tight"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+              >
+                Gymnastiksalens Aktiviteter
+              </h3>
+              <p className="text-[var(--ink-3)] mt-2">
+                Ugentligt skema for faste aktiviteter i gymnastiksalen
+              </p>
+            </div>
+          </div>
 
-          <div className="overflow-x-auto rounded-lg">
-            <table className="w-full min-w-[580px] border-collapse text-sm">
+          <div className="overflow-x-auto no-scrollbar">
+            <table className="w-full min-w-[640px] border-collapse text-sm">
               <thead>
-                <tr className="bg-[#00a6c0] text-white">
-                  <th className="px-4 py-3 text-left font-semibold rounded-tl-lg w-24">Tidspunkt</th>
-                  <th className="px-4 py-3 text-left font-semibold">Mandag</th>
-                  <th className="px-4 py-3 text-left font-semibold">Tirsdag</th>
-                  <th className="px-4 py-3 text-left font-semibold">Onsdag</th>
-                  <th className="px-4 py-3 text-left font-semibold">Torsdag</th>
-                  <th className="px-4 py-3 text-left font-semibold rounded-tr-lg">Fredag</th>
+                <tr className="border-b-2 border-[var(--ink)]">
+                  <th className="py-3 pr-4 text-left micro-label text-[var(--ink-3)] w-20">
+                    Tid
+                  </th>
+                  {["Man", "Tir", "Ons", "Tor", "Fre"].map((d) => (
+                    <th
+                      key={d}
+                      className="py-3 px-3 text-left micro-label text-[var(--ink-3)]"
+                    >
+                      {d}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-gray-100 bg-white">
-                  <td className="px-4 py-3 font-medium text-gray-400 bg-gray-50 whitespace-nowrap">16:00</td>
-                  <td className="px-4 py-3"></td>
-                  <td className="px-4 py-3"></td>
-                  <td className="px-4 py-3">
-                    <div className="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-                      <div className="text-xs font-semibold text-[#ff904b] mb-0.5">16.30–18.00</div>
-                      <div className="font-semibold text-gray-800">Uni cyklning</div>
-                      <div className="text-xs text-gray-500 mt-1">Anne Lise</div>
-                    </div>
+                <tr className="border-b border-[var(--rule)]/60">
+                  <td className="py-3 pr-4 micro-label text-[var(--ink-4)] align-top">
+                    16:00
                   </td>
-                  <td className="px-4 py-3"></td>
-                  <td className="px-4 py-3"></td>
+                  <td className="p-2"></td>
+                  <td className="p-2"></td>
+                  <td className="p-2">
+                    <ActivityChip
+                      time="16.30–18.00"
+                      title="Uni cyklning"
+                      who="Anne Lise"
+                      color="var(--ember)"
+                    />
+                  </td>
+                  <td className="p-2"></td>
+                  <td className="p-2"></td>
                 </tr>
-                <tr className="border-b border-gray-100 bg-white">
-                  <td className="px-4 py-3 font-medium text-gray-400 bg-gray-50 whitespace-nowrap">18:00</td>
-                  <td className="px-4 py-3"></td>
-                  <td className="px-4 py-3">
-                    <div className="bg-purple-50 border border-purple-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-                      <div className="text-xs font-semibold text-purple-600 mb-0.5">18.30–19.30</div>
-                      <div className="font-semibold text-gray-800">Jumping fitness</div>
-                      <div className="text-xs text-gray-500 mt-1">Karina Thøgersen</div>
-                    </div>
+                <tr className="border-b border-[var(--rule)]/60">
+                  <td className="py-3 pr-4 micro-label text-[var(--ink-4)] align-top">
+                    18:00
                   </td>
-                  <td className="px-4 py-3"></td>
-                  <td className="px-4 py-3"></td>
-                  <td className="px-4 py-3"></td>
+                  <td className="p-2"></td>
+                  <td className="p-2">
+                    <ActivityChip
+                      time="18.30–19.30"
+                      title="Jumping fitness"
+                      who="Karina Thøgersen"
+                      color="var(--berry)"
+                    />
+                  </td>
+                  <td className="p-2"></td>
+                  <td className="p-2"></td>
+                  <td className="p-2"></td>
                 </tr>
-                <tr className="border-b border-gray-100 bg-white">
-                  <td className="px-4 py-3 font-medium text-gray-400 bg-gray-50 whitespace-nowrap">19:00</td>
-                  <td className="px-4 py-3">
-                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-                      <div className="text-xs font-semibold text-green-700 mb-0.5">19:00</div>
-                      <div className="font-semibold text-gray-800">Badminton</div>
-                      <div className="text-xs text-gray-500 mt-1">Maja Møller Jensen</div>
-                    </div>
+                <tr>
+                  <td className="py-3 pr-4 micro-label text-[var(--ink-4)] align-top">
+                    19:00
                   </td>
-                  <td className="px-4 py-3">
-                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-                      <div className="text-xs font-semibold text-green-700 mb-0.5">Fra 19.30</div>
-                      <div className="font-semibold text-gray-800">Badminton</div>
-                      <div className="text-xs text-gray-500 mt-1">Susanne Nygaard</div>
-                    </div>
+                  <td className="p-2">
+                    <ActivityChip
+                      time="19:00"
+                      title="Badminton"
+                      who="Maja Møller Jensen"
+                      color="var(--forest)"
+                    />
                   </td>
-                  <td className="px-4 py-3"></td>
-                  <td className="px-4 py-3">
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-                      <div className="text-xs font-semibold text-blue-600 mb-0.5">19.00–20.00</div>
-                      <div className="font-semibold text-gray-800">Bordtennis</div>
-                      <div className="text-xs text-gray-500 mt-1">Kåre Have Jensen</div>
-                    </div>
+                  <td className="p-2">
+                    <ActivityChip
+                      time="Fra 19.30"
+                      title="Badminton"
+                      who="Susanne Nygaard"
+                      color="var(--forest)"
+                    />
                   </td>
-                  <td className="px-4 py-3">
-                    <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
-                      <div className="text-xs font-semibold text-green-700 mb-0.5">19:00</div>
-                      <div className="font-semibold text-gray-800">Badminton</div>
-                      <div className="text-xs text-gray-500 mt-1">Morten Pipper</div>
-                    </div>
+                  <td className="p-2"></td>
+                  <td className="p-2">
+                    <ActivityChip
+                      time="19.00–20.00"
+                      title="Bordtennis"
+                      who="Kåre Have Jensen"
+                      color="var(--sky)"
+                    />
+                  </td>
+                  <td className="p-2">
+                    <ActivityChip
+                      time="19:00"
+                      title="Badminton"
+                      who="Morten Pipper"
+                      color="var(--forest)"
+                    />
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          {/* Additional rentals */}
-          <div className="mt-6 pt-5 border-t border-gray-100">
-            <p className="font-semibold text-gray-700 mb-3">Derudover er gymnastiksalen lejet ud:</p>
+          <div className="mt-8 pt-6 border-t border-[var(--rule)]">
+            <p className="micro-label text-[var(--ink-3)] mb-3">
+              Derudover er gymnastiksalen lejet ud:
+            </p>
             <ul className="space-y-2">
-              <li className="flex items-start gap-2 text-gray-600 text-sm">
-                <span className="text-[#00a6c0] font-bold mt-0.5">•</span>
-                <span>Hver anden weekend – kontaktperson: Levi Andersen</span>
+              <li className="flex items-start gap-3 text-[var(--ink-2)]">
+                <span className="text-[var(--sky)] mt-1.5">◆</span>
+                <span>
+                  Hver anden weekend — kontaktperson: Levi Andersen
+                </span>
               </li>
-              <li className="flex items-start gap-2 text-gray-600 text-sm">
-                <span className="text-[#00a6c0] font-bold mt-0.5">•</span>
-                <span>En eftermiddag om ugen, skifter dag og tidspunkt hver anden uge – kontaktperson: Mette Siercke</span>
+              <li className="flex items-start gap-3 text-[var(--ink-2)]">
+                <span className="text-[var(--sky)] mt-1.5">◆</span>
+                <span>
+                  En eftermiddag om ugen, skifter dag og tidspunkt hver anden
+                  uge — kontaktperson: Mette Siercke
+                </span>
               </li>
             </ul>
           </div>
-        </div>
+        </PaperCard>
       </Section>
 
-      {/* Støt Vulkanen Section */}
+      {/* ============================== STØT VULKANEN ============================== */}
       <Section
         id="stoet-vulkanen"
         title="Støt Vulkanen"
-        subtitle="Din støtte gør en forskel"
-        className="bg-gray-50"
+        subtitle="Din støtte gør en forskel."
+        numeral="§ 08"
+        kicker="Støtte"
+        variant="paper-2"
       >
-        <div className="bg-white rounded-lg p-8 md:p-12 shadow-sm border-l-4 border-[#ff904b] text-center">
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
-            Kunne du tænke dig at støtte op om projekt Vulkanen Mors med økonomisk støtte?
-          </p>
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
-            Det kan gøres med låneindskud eller ved at give en gave.
-          </p>
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
-            Man kan støtte med lån i klumper af <strong>2.500 kroner</strong>.
-          </p>
-          
-          <div className="bg-gray-50 rounded-lg p-8 md:p-10 mb-6">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">Betalingsoplysninger</h3>
-            
-            <div className="flex flex-col items-center">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#049133] rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-lg font-semibold text-gray-600 mb-2">Bankoverførsel</p>
-                <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Frøslev Mollerup Sparekasse</p>
-                <p className="text-2xl md:text-3xl font-mono font-bold text-gray-900 mb-6">9133 - 1070028</p>
-                <p className="text-lg md:text-xl text-gray-700 font-semibold leading-relaxed">Ved betaling bedes du oplyse dit navn, adresse og telefonnummer på overførslen, så vi kan spore betalingen.</p>
+        <PaperCard>
+          <div className="grid grid-cols-12 gap-6 md:gap-10">
+            <div className="col-span-12 md:col-span-5">
+              <Kicker color="var(--ember)">Om støtten</Kicker>
+              <h3
+                className="font-display text-3xl md:text-4xl text-[var(--ink)] mb-6 leading-[1.1]"
+                style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 96' }}
+              >
+                Kunne du tænke dig at støtte op om projekt Vulkanen Mors med{" "}
+                <em className="text-[var(--ember-deep)]">økonomisk støtte?</em>
+              </h3>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-3">
+                Det kan gøres med låneindskud eller ved at give en gave.
+              </p>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed">
+                Man kan støtte med lån i klumper af{" "}
+                <strong className="text-[var(--ink)] font-display italic text-xl">
+                  2.500 kroner
+                </strong>
+                .
+              </p>
+            </div>
+
+            {/* Bank details — receipt style */}
+            <div className="col-span-12 md:col-span-7">
+              <div className="relative border-2 border-[var(--ink)] bg-[var(--paper)] p-6 md:p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="micro-label text-[var(--ink-3)]">
+                    ● Betalingsoplysninger
+                  </span>
+                  <span className="micro-label text-[var(--ink-4)]">№ 01</span>
+                </div>
+
+                <p className="micro-label text-[var(--ink-3)] mb-2">
+                  Bankoverførsel
+                </p>
+                <p
+                  className="font-display text-2xl md:text-3xl text-[var(--ink)] leading-tight mb-5"
+                  style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+                >
+                  Frøslev Mollerup Sparekasse
+                </p>
+
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-3 mb-8 py-5 border-t border-b border-[var(--ink)]">
+                  <span className="micro-label text-[var(--ink-3)]">
+                    Reg · Konto
+                  </span>
+                  <span className="font-mono text-2xl md:text-3xl text-[var(--ink)] tabular-nums tracking-tight">
+                    9133 · 1070028
+                  </span>
+                </div>
+
+                <p className="text-sm md:text-base text-[var(--ink-2)] leading-relaxed">
+                  Ved betaling bedes du oplyse dit navn, adresse og
+                  telefonnummer på overførslen, så vi kan spore betalingen.
+                </p>
               </div>
             </div>
           </div>
-          
-          <p className="text-lg md:text-xl text-gray-600 italic">
-            Tak for din støtte til Vulkanen Mors!
-            <br />
-            Kontakt bestyrelsen herunder hvis du har spørgsmål
-          </p>
-        </div>
 
-        {/* Mascot Section */}
-        <div id="vulk" className="bg-white rounded-lg p-6 md:p-8 shadow-sm border-l-4 border-[#ff904b] mt-6">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-shrink-0">
-              <Image
-                src="/Vulk.png"
-                alt="Vulk - Vulkakanistens mascot nøglering"
-                width={270}
-                height={270}
-                className="rounded-lg object-contain transition-transform duration-300 hover:scale-105 hover:rotate-2"
-              />
+          <div className="mt-10 pt-8 border-t border-[var(--rule)] text-center">
+            <p
+              className="font-display italic text-xl md:text-2xl text-[var(--ink-2)] max-w-2xl mx-auto leading-relaxed"
+              style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 72' }}
+            >
+              Tak for din støtte til Vulkanen Mors!
+              <br />
+              <span className="text-[var(--ink-3)] text-base not-italic">
+                Kontakt bestyrelsen herunder hvis du har spørgsmål.
+              </span>
+            </p>
+          </div>
+        </PaperCard>
+
+        {/* Vulk mascot */}
+        <div id="vulk" className="paper-card p-6 md:p-10 relative overflow-hidden">
+          <div className="grid grid-cols-12 gap-8 items-center">
+            <div className="col-span-12 md:col-span-5 flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-[var(--ember)]/20 blur-2xl" />
+                <Image
+                  src="/Vulk.png"
+                  alt="Vulk - Vulkakanistens mascot nøglering"
+                  width={280}
+                  height={280}
+                  className="relative transition-transform duration-500 hover:scale-110 hover:rotate-6"
+                />
+              </div>
             </div>
-            <div className="text-left">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Vores Mascot &ndash; &ldquo;Vulk&rdquo;</h3>
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                Vores Mascot Vulkakanisten &ldquo;Vulk&rdquo; er sat i fabrikation. Den kan købes som nøglering for <strong>40 kr.</strong> hos <strong>Ørding Købmand</strong> eller ved henvendelse til <a href="tel:23394641" className="text-[#ff904b] hover:underline font-semibold">23 39 46 41</a>.
-                <br />
+            <div className="col-span-12 md:col-span-7">
+              <Kicker color="var(--ember)">Maskot</Kicker>
+              <h3
+                className="font-display text-4xl md:text-5xl lg:text-6xl text-[var(--ink)] mb-6 leading-[1]"
+                style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 144' }}
+              >
+                Vores Maskot —{" "}
+                <em className="italic text-[var(--ember-deep)]">“Vulk”</em>
+              </h3>
+              <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-2">
+                Vores Maskot Vulkakanisten “Vulk” er sat i fabrikation. Den kan
+                købes som nøglering for{" "}
+                <strong className="text-[var(--ink)] font-display italic">
+                  40 kr.
+                </strong>{" "}
+                hos <strong className="text-[var(--ink)]">Ørding Købmand</strong>{" "}
+                eller ved henvendelse til{" "}
+                <a
+                  href="tel:23394641"
+                  className="link-reveal text-[var(--ember-deep)] font-semibold"
+                >
+                  23 39 46 41
+                </a>
+                .
+              </p>
+              <p className="text-[var(--ink-3)] italic">
                 Hele beløb går direkte til Vulkanen.
               </p>
             </div>
@@ -901,135 +1251,154 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Bestyrelsen Section */}
+      {/* ============================== BESTYRELSEN ============================== */}
       <Section
         id="kontakt"
         title="Bestyrelsen"
-        className="bg-white"
+        numeral="§ 09"
+        kicker="Kontakt"
+        subtitle="Find os i Ørding — kom forbi, ring, eller skriv."
       >
-        {/* Address Banner */}
-        <div className="bg-gradient-to-r from-[#ff904b] to-[#e67d3a] rounded-lg p-6 md:p-8 mb-8 shadow-lg">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-white">
-            <svg className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <div className="text-center md:text-left">
-              <p className="text-xl md:text-2xl font-bold">Skolesvinget 9, 7990 Øster Assels</p>
-            </div>
-          </div>
+        {/* Address banner */}
+        <div className="relative border-2 border-[var(--ink)] bg-[var(--ember)] p-6 md:p-8 flex flex-col md:flex-row items-center justify-center gap-4 text-[var(--ink)]">
+          <span className="ornament not-italic text-2xl">✦</span>
+          <p
+            className="font-display text-2xl md:text-3xl lg:text-4xl leading-tight text-center"
+            style={{ fontVariationSettings: '"SOFT" 100, "opsz" 96' }}
+          >
+            Skolesvinget 9, 7990 Øster Assels
+          </p>
+          <span className="ornament not-italic text-2xl">✦</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Formand */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-[#ff904b] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div className="text-sm font-semibold text-[#ff904b] mb-2">Formand</div>
-            <div className="text-2xl font-bold text-gray-900 mb-3">Søren Nygaard</div>
-            <div className="text-lg text-gray-700 mb-2">
-              <strong>Tlf:</strong> 40 76 78 87
+        {/* Board members */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--rule)] border border-[var(--rule)]">
+          {[
+            {
+              role: "Formand",
+              name: "Søren Nygaard",
+              tlf: "40 76 78 87",
+              email: "srnygaard@hotmail.com",
+              color: "var(--ember-deep)",
+            },
+            {
+              role: "Næstformand",
+              name: "Martin Bay-Mortensen",
+              tlf: "60 15 82 90",
+              email: "mamo@danishagro.dk",
+              color: "var(--sky)",
+            },
+            {
+              role: "Kasserer",
+              name: "Johannes Jørgensen",
+              tlf: "23 39 46 41",
+              email: "Minna.Johannes61@gmail.com",
+              color: "var(--forest)",
+            },
+            {
+              role: "Medlem",
+              name: "Kirsten Pedersen",
+              tlf: "51 55 77 40",
+              email: "npkp65@gmail.com",
+              color: "var(--berry)",
+            },
+            {
+              role: "Medlem",
+              name: "Morten Pipper",
+              tlf: "26 81 93 81",
+              email: "mortenpipper@hotmail.com",
+              color: "var(--berry)",
+            },
+            {
+              role: "Medlem",
+              name: "Søren Lyndrup",
+              tlf: "30 70 38 09",
+              email: "sl@sorenlyndrup.dk",
+              color: "var(--berry)",
+            },
+            {
+              role: "Medlem",
+              name: "Anna Marie L. Klysner",
+              tlf: "20 44 96 58",
+              email: "Anna-tingholm@hotmail.com",
+              color: "var(--berry)",
+            },
+          ].map((m, i) => (
+            <div
+              key={i}
+              className="group relative bg-[var(--paper)] p-6 md:p-8 transition-colors duration-500 hover:bg-[#faf5ea]"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <span
+                  className="micro-label"
+                  style={{ color: m.color }}
+                >
+                  ● {m.role}
+                </span>
+                <span className="micro-label text-[var(--ink-4)]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h4
+                className="font-display text-2xl md:text-3xl text-[var(--ink)] mb-6 leading-tight group-hover:italic transition-all"
+                style={{ fontVariationSettings: '"SOFT" 100, "opsz" 72' }}
+              >
+                {m.name}
+              </h4>
+              <div className="space-y-2 text-sm md:text-base">
+                <p className="text-[var(--ink-2)]">
+                  <span className="micro-label text-[var(--ink-4)] mr-2">
+                    Tlf
+                  </span>
+                  {m.tlf}
+                </p>
+                <p className="text-[var(--ink-2)] break-all">
+                  <span className="micro-label text-[var(--ink-4)] mr-2">
+                    Email
+                  </span>
+                  <a
+                    href={`mailto:${m.email}`}
+                    className="link-reveal"
+                    style={{ color: m.color }}
+                  >
+                    {m.email}
+                  </a>
+                </p>
+              </div>
             </div>
-            <div className="text-lg text-gray-700">
-              <strong>E-mail:</strong>{" "}
-              <a href="mailto:srnygaard@hotmail.com" className="text-[#ff904b] hover:underline">
-                srnygaard@hotmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* Næstformand */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-blue-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div className="text-sm font-semibold text-blue-500 mb-2">Næstformand</div>
-            <div className="text-2xl font-bold text-gray-900 mb-3">Martin Bay-Mortensen</div>
-            <div className="text-lg text-gray-700 mb-2">
-              <strong>Tlf:</strong> 60 15 82 90
-            </div>
-            <div className="text-lg text-gray-700">
-              <strong>E-mail:</strong>{" "}
-              <a href="mailto:mamo@danishagro.dk" className="text-blue-500 hover:underline">
-                mamo@danishagro.dk
-              </a>
-            </div>
-          </div>
-
-          {/* Kasserer */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-green-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div className="text-sm font-semibold text-green-500 mb-2">Kasserer</div>
-            <div className="text-2xl font-bold text-gray-900 mb-3">Johannes Jørgensen</div>
-            <div className="text-lg text-gray-700 mb-2">
-              <strong>Tlf:</strong> 23 39 46 41
-            </div>
-            <div className="text-lg text-gray-700">
-              <strong>E-mail:</strong>{" "}
-              <a href="mailto:Minna.Johannes61@gmail.com" className="text-green-500 hover:underline">
-                Minna.Johannes61@gmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* Medlem - Kirsten Pedersen */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
-            <div className="text-2xl font-bold text-gray-900 mb-3">Kirsten Pedersen</div>
-            <div className="text-lg text-gray-700 mb-2">
-              <strong>Tlf:</strong> 51 55 77 40
-            </div>
-            <div className="text-lg text-gray-700">
-              <strong>E-mail:</strong>{" "}
-              <a href="mailto:npkp65@gmail.com" className="text-purple-500 hover:underline">
-                npkp65@gmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* Medlem - Morten Pipper */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
-            <div className="text-2xl font-bold text-gray-900 mb-3">Morten Pipper</div>
-            <div className="text-lg text-gray-700 mb-2">
-              <strong>Tlf:</strong> 26 81 93 81
-            </div>
-            <div className="text-lg text-gray-700">
-              <strong>E-mail:</strong>{" "}
-              <a href="mailto:mortenpipper@hotmail.com" className="text-purple-500 hover:underline">
-                mortenpipper@hotmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* Medlem - Søren Lyndrup */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
-            <div className="text-2xl font-bold text-gray-900 mb-3">Søren Lyndrup</div>
-            <div className="text-lg text-gray-700 mb-2">
-              <strong>Tlf:</strong> 30 70 38 09
-            </div>
-            <div className="text-lg text-gray-700">
-              <strong>E-mail:</strong>{" "}
-              <a href="mailto:sl@sorenlyndrup.dk" className="text-purple-500 hover:underline">
-                sl@sorenlyndrup.dk
-              </a>
-            </div>
-          </div>
-
-          {/* Medlem - Anna Marie L. Klysner */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-purple-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div className="text-sm font-semibold text-purple-500 mb-2">Medlem</div>
-            <div className="text-2xl font-bold text-gray-900 mb-3">Anna Marie L. Klysner</div>
-            <div className="text-lg text-gray-700 mb-2">
-              <strong>Tlf:</strong> 20 44 96 58
-            </div>
-            <div className="text-lg text-gray-700">
-              <strong>E-mail:</strong>{" "}
-              <a href="mailto:Anna-tingholm@hotmail.com" className="text-purple-500 hover:underline">
-                Anna-tingholm@hotmail.com
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </Section>
 
-      {/* Footer */}
       <Footer />
     </main>
+  );
+}
+
+function ActivityChip({
+  time,
+  title,
+  who,
+  color,
+}: {
+  time: string;
+  title: string;
+  who: string;
+  color: string;
+}) {
+  return (
+    <div
+      className="border p-2.5 transition-all hover:-translate-y-0.5"
+      style={{ borderColor: color, background: `${color}10` }}
+    >
+      <div className="micro-label mb-0.5" style={{ color }}>
+        {time}
+      </div>
+      <div className="font-display text-base text-[var(--ink)] leading-tight"
+           style={{ fontVariationSettings: '"SOFT" 100, "opsz" 48' }}>
+        {title}
+      </div>
+      <div className="text-xs text-[var(--ink-3)] mt-1">{who}</div>
+    </div>
   );
 }

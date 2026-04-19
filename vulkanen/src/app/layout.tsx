@@ -1,7 +1,7 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
 
 import { TRPCReactProvider } from "~/trpc/react";
@@ -62,16 +62,33 @@ export const metadata: Metadata = {
   },
 };
 
-const geist = Geist({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-fraunces",
+  axes: ["SOFT", "WONK", "opsz"],
+  display: "swap",
+});
+
+const instrument = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
 });
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="da" className={`${geist.variable}`}>
+    <html
+      lang="da"
+      className={`${fraunces.variable} ${instrument.variable} ${jetbrains.variable}`}
+    >
       <body>
         <TRPCReactProvider>
           <Analytics />
