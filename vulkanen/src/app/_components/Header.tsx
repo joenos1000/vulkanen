@@ -88,7 +88,6 @@ export default function Header() {
 
           {/* Middle dateline */}
           <div className="hidden lg:flex items-center gap-4 micro-label text-[var(--ink-3)]">
-            <span className="blink-dot h-1.5 w-1.5 rounded-full bg-[var(--forest)]" />
             <span>Et nyt kapitel for Ørding</span>
           </div>
 
