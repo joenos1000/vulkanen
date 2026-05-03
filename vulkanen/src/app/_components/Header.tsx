@@ -16,8 +16,9 @@ const navItems: NavItem[] = [
   { id: "velo-mors", number: "04", label: "Velo Mors" },
   { id: "vaerdier", number: "05", label: "Værdier" },
   { id: "book-vulkanen", number: "06", label: "Book Vulkanen" },
-  { id: "stoet-vulkanen", number: "07", label: "Støt Vulkanen" },
-  { id: "kontakt", number: "08", label: "Bestyrelsen" },
+  { id: "skema", number: "07", label: "Skema" },
+  { id: "stoet-vulkanen", number: "08", label: "Støt Vulkanen" },
+  { id: "kontakt", number: "09", label: "Bestyrelsen" },
 ];
 
 export default function Header() {
