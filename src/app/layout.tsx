@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Vulkanen Mors",
     images: [
       {
-        url: "/billeder/bestyrelse-foran-vulkanen.JPEG",
+        url: "/billeder/bestyrelsen.JPG",
         width: 1200,
         height: 630,
         alt: "Bestyrelsen foran Vulkanen",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vulkanen Mors - Et nyt kapitel for Ørding",
     description: "Vulkanen Mors er et fællesskabsprojekt i Ørding på Mors. Vi skaber et levende møde- og lærested med VÆRKsted for kreative mennesker og Velo Mors cykelunivers.",
-    images: ["/billeder/bestyrelse-foran-vulkanen.JPEG"],
+    images: ["/billeder/bestyrelsen.JPG"],
   },
   robots: {
     index: true,

@@ -178,10 +178,11 @@ export default function Home() {
             <div className="col-span-12 lg:col-span-9 relative">
               <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden border border-[var(--rule)]">
                 <Image
-                  src="/billeder/bestyrelse-foran-vulkanen.JPEG"
+                  src="/billeder/bestyrelsen2.JPG"
                   alt="Bestyrelsen foran Vulkanen"
                   fill
                   className="object-cover"
+                  style={{ objectPosition: "center 70%" }}
                   priority
                 />
                 {/* Photo caption strip */}
