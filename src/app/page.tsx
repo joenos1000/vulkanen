@@ -1347,8 +1347,10 @@ export default function Home() {
                 </a>
                 .
               </p>
-              <p className="text-[var(--ink-3)] italic">
-                Hele beløb går direkte til Vulkanen.
+              <p className="text-lg leading-relaxed">
+                <span className="inline-block bg-[var(--ember)] text-white font-bold px-3 py-1">
+                  Hele beløb går direkte til Vulkanen.
+                </span>
               </p>
             </div>
           </div>
