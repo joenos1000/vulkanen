@@ -95,14 +95,14 @@ export default function Home() {
       <Header />
 
       {/* ============================== HERO ============================== */}
-      <section className="relative min-h-[100vh] pt-28 md:pt-36 pb-20 px-4 sm:px-6 md:px-10">
+      <section className="relative min-h-[100vh] pt-16 md:pt-20 pb-20 px-4 sm:px-6 md:px-10">
         {/* Background ornamental type */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-24 md:top-32 text-center overflow-hidden select-none"
+          className="pointer-events-none absolute inset-x-0 top-12 md:top-16 text-center overflow-hidden select-none"
         >
           <p
-            className="font-display text-[28vw] leading-[0.8] text-[var(--paper-3)]/50 whitespace-nowrap"
+            className="font-display text-[22vw] leading-[0.8] text-[var(--paper-3)]/50 whitespace-nowrap"
             style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 144' }}
           >
             vulkanen
@@ -110,8 +110,8 @@ export default function Home() {
         </div>
 
         <div className="relative mx-auto max-w-7xl">
-          {/* Top dateline */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10 md:mb-16 rise-in">
+          {/* Top dateline — temporarily invisible (space kept) to try the look without it, swap "invisible" back to nothing to restore */}
+          <div className="invisible flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 md:mb-6 rise-in">
             <div className="flex items-center gap-4">
               <span className="h-2 w-2 rounded-full bg-[var(--forest)] blink-dot" />
               <span className="micro-label text-[var(--ink-3)]">
@@ -124,9 +124,9 @@ export default function Home() {
           </div>
 
           {/* Title */}
-          <div className="grid grid-cols-12 gap-4 md:gap-8 items-end mb-10 md:mb-14">
+          <div className="grid grid-cols-12 gap-4 md:gap-8 items-end mb-8 md:mb-10">
             <h1
-              className="col-span-12 md:col-span-9 font-display text-[clamp(3.5rem,14vw,11rem)] leading-[0.82] tracking-tight text-[var(--ink)] text-balance rise-in"
+              className="col-span-12 md:col-span-9 font-display text-[clamp(3rem,11vw,8.5rem)] leading-[0.82] tracking-tight text-[var(--ink)] text-balance rise-in"
               style={{
                 fontVariationSettings: '"SOFT" 100, "WONK" 0, "opsz" 144',
                 animationDelay: "0.1s",
@@ -144,7 +144,7 @@ export default function Home() {
           </div>
 
           {/* Photo + AKTUELT card + Vulk */}
-          <div className="relative grid grid-cols-12 gap-6 md:gap-8 items-stretch rise-in" style={{ animationDelay: "0.4s" }}>
+          <div className="relative grid grid-cols-12 gap-6 md:gap-8 items-stretch rise-in lg:max-w-[82%] lg:mx-auto" style={{ animationDelay: "0.4s" }}>
             {/* AKTUELT card - desktop position */}
             <a
               href="#status og nyheder"
@@ -176,40 +176,60 @@ export default function Home() {
 
             {/* Main photo */}
             <div className="col-span-12 lg:col-span-9 relative">
-              <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden border border-[var(--rule)]">
+              <a
+                href="#status og nyheder"
+                onClick={scrollToSection("status og nyheder")}
+                className="group block relative aspect-[277/191] overflow-hidden border border-[var(--rule)] cursor-pointer"
+              >
                 <Image
-                  src="/billeder/bestyrelsen2.JPG"
-                  alt="Bestyrelsen foran Vulkanen"
+                  // Temporary swap for Cykelfestival — revert to bestyrelsen2 after the event:
+                  // src="/billeder/bestyrelsen2.JPG"
+                  // alt="Bestyrelsen foran Vulkanen"
+                  // Note: aspect-[277/191] matches this flyer's native ratio (1662×1146) so it
+                  // isn't cropped. The lg:max-w-[88%] on the row above (instead of a height cap)
+                  // is what makes the whole block a bit smaller — revert both together with
+                  // aspect-[16/10] md:aspect-[16/9] on this box. This link to "status og nyheder"
+                  // is also part of the temporary swap — remove it when reverting to bestyrelsen2.
+                  src="/hop-på-cyklen.jpeg"
+                  alt="Hop på cyklen"
                   fill
-                  className="object-cover"
-                  style={{ objectPosition: "center 70%" }}
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  style={{ objectPosition: "center" }}
                   priority
                 />
-                {/* Photo caption strip */}
+                {/* Photo caption strip — temporarily removed while the Cykelfestival flyer is
+                    up (the poster already has its own text, so the caption/gradient just
+                    duplicated it). Original text was "Fig. 01 — Bestyrelsen"; restore this
+                    block with that text when reverting to bestyrelsen2:
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 md:p-6 flex items-end justify-between">
                   <span className="micro-label text-white/80">
                     Fig. 01 — Bestyrelsen
                   </span>
-                  <span className="micro-label text-white/80 hidden sm:block">
-                    Ørding, Mors
+                  <span className="micro-label text-white/80 hidden sm:flex items-center gap-2">
+                    Læs mere
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
                   </span>
                 </div>
-              </div>
+                */}
+              </a>
 
-              {/* Vulk — bottom right, outside image */}
+              {/* Vulk — bottom right, outside image. pointer-events-none on the wrapper +
+                  pointer-events-auto on the two children keeps this badge clickable on its
+                  own icon/label, but stops its bounding box (which slightly overlaps the
+                  photo's bottom-right corner) from swallowing clicks meant for the photo link. */}
               <a
                 href="#vulk"
                 onClick={scrollToSection("vulk")}
-                className="hidden md:flex absolute -bottom-24 right-4 md:right-8 flex-col items-center group cursor-pointer z-10"
+                className="hidden md:flex absolute -bottom-24 right-4 md:right-8 flex-col items-center group cursor-pointer z-10 pointer-events-none"
               >
                 <Image
                   src="/Vulk.png"
                   alt="Vulk nøglering"
                   width={190}
                   height={190}
-                  className="drop-shadow-xl rotate-[12deg] transition-all duration-500 group-hover:scale-110 group-hover:rotate-[4deg]"
+                  className="pointer-events-auto drop-shadow-xl rotate-[12deg] transition-all duration-500 group-hover:scale-110 group-hover:rotate-[4deg]"
                 />
-                <div className="relative -mt-3">
+                <div className="relative -mt-3 pointer-events-auto">
                   <span className="micro-label text-[var(--ink)] bg-[var(--paper)] px-2 py-1 border border-[var(--rule)]">
                     Køb en “Vulk” →
                   </span>
