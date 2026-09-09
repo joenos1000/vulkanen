@@ -18,19 +18,17 @@ The following files have been created and configured:
 
 3. **SEO Metadata** (`/src/app/layout.tsx`)
    - Comprehensive meta tags for SEO
+   - Canonical URL for `https://www.vulkanen.dk`
    - Open Graph tags for social media sharing
    - Twitter Card support
-   - Structured data ready
+   - `WebSite` and `Organization` structured data
 
-## 🔧 Configuration Required
+4. **Site identity** (`/src/lib/site.ts`)
+   - Keeps the public domain, title, description, and address consistent
+   - Sitemap, robots, metadata, and structured data all use this source
 
-### Update Your Domain
-
-In the following files, replace `https://vulkanenmors.dk` with your actual domain:
-
-1. `/src/app/sitemap.ts` - Line 6
-2. `/src/app/robots.ts` - Line 4
-3. `/src/app/layout.tsx` - Line 10
+The canonical public URL is `https://www.vulkanen.dk`. Update
+`/src/lib/site.ts` if the canonical domain or site identity changes later.
 
 ## 📋 Google Search Console Setup
 
@@ -38,7 +36,8 @@ In the following files, replace `https://vulkanenmors.dk` with your actual domai
 
 1. Go to [Google Search Console](https://search.google.com/search-console)
 2. Click "Add Property"
-3. Enter your domain (e.g., `https://vulkanenmors.dk`)
+3. Choose **Domain** and enter `vulkanen.dk`, or choose **URL prefix** and enter
+   `https://www.vulkanen.dk/`
 4. Choose a verification method:
 
 #### Option A: HTML Tag (Recommended)
@@ -76,8 +75,8 @@ In the following files, replace `https://vulkanenmors.dk` with your actual domai
 
 Once your site is deployed, verify these URLs work:
 
-- `https://your-domain.com/sitemap.xml` - Should show your sitemap
-- `https://your-domain.com/robots.txt` - Should show robots.txt
+- `https://www.vulkanen.dk/sitemap.xml` - Production sitemap
+- `https://www.vulkanen.dk/robots.txt` - Production crawler rules
 
 ## 📊 Monitoring
 
@@ -111,7 +110,7 @@ After setup, you can monitor:
 
 ## 📝 Additional Recommendations
 
-1. **Add Structured Data**: Consider adding JSON-LD structured data for events and organizations
+1. **Add Event Structured Data**: Add JSON-LD for public events when their details are published
 2. **Google Analytics**: Set up GA4 for traffic monitoring
 3. **Performance**: Monitor Core Web Vitals in Search Console
 4. **Content Updates**: Keep your content fresh and update lastModified dates

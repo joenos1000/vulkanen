@@ -1,14 +1,15 @@
-import { type MetadataRoute } from 'next'
+import { type MetadataRoute } from "next";
+
+import { site } from "~/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://vulkanenmors.dk' // Update this to your actual domain
-  
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/private/'],
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/api/", "/private/"],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
-  }
+    sitemap: `${site.url}/sitemap.xml`,
+    host: site.url,
+  };
 }

@@ -1,14 +1,14 @@
-import { type MetadataRoute } from 'next'
+import { type MetadataRoute } from "next";
+
+import { site } from "~/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vulkanenmors.dk' // Update this to your actual domain
-  
   return [
     {
-      url: baseUrl,
+      url: site.url,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1,
     },
-  ]
+  ];
 }

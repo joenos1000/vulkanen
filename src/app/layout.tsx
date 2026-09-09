@@ -2,21 +2,37 @@ import "~/styles/globals.css";
 
 import { type Metadata } from "next";
 import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
+import { site } from "~/lib/site";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vulkanenmors.dk'), // Update this to your actual domain
+  metadataBase: new URL(site.url),
+  applicationName: site.name,
   title: {
-    default: "Vulkanen Mors - Et nyt kapitel for Ørding",
-    template: "%s | Vulkanen Mors"
+    default: site.title,
+    template: `%s | ${site.name}`,
   },
-  description: "Vulkanen Mors er et fællesskabsprojekt i Ørding på Mors. Vi skaber et levende møde- og lærested med VÆRKsted for kreative mennesker og Velo Mors cykelunivers. Tegn anpart og vær med til at forme fremtiden.",
-  keywords: ["Vulkanen Mors", "Ørding", "Mors", "VÆRKsted", "Velo Mors", "fællesskab", "kreativitet", "cykling", "anpart", "lokalsamfund"],
-  authors: [{ name: "Vulkanen Mors" }],
-  creator: "Vulkanen Mors",
-  publisher: "Vulkanen Mors",
+  description: site.description,
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "Vulkanen Mors",
+    "Ørding",
+    "Mors",
+    "VÆRKsted",
+    "Velo Mors",
+    "fællesskab",
+    "kreativitet",
+    "cykling",
+    "anpart",
+    "lokalsamfund",
+  ],
+  authors: [{ name: site.name }],
+  creator: site.name,
+  publisher: site.name,
   formatDetection: {
     email: false,
     address: false,
@@ -26,23 +42,21 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "da_DK",
-    url: "https://vulkanenmors.dk",
-    title: "Vulkanen Mors - Et nyt kapitel for Ørding",
-    description: "Vulkanen Mors er et fællesskabsprojekt i Ørding på Mors. Vi skaber et levende møde- og lærested med VÆRKsted for kreative mennesker og Velo Mors cykelunivers.",
-    siteName: "Vulkanen Mors",
+    url: site.url,
+    title: site.title,
+    description: site.description,
+    siteName: site.name,
     images: [
       {
         url: "/billeder/bestyrelsen.JPG",
-        width: 1200,
-        height: 630,
         alt: "Bestyrelsen foran Vulkanen",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vulkanen Mors - Et nyt kapitel for Ørding",
-    description: "Vulkanen Mors er et fællesskabsprojekt i Ørding på Mors. Vi skaber et levende møde- og lærested med VÆRKsted for kreative mennesker og Velo Mors cykelunivers.",
+    title: site.title,
+    description: site.description,
     images: ["/billeder/bestyrelsen.JPG"],
   },
   robots: {
@@ -51,15 +65,40 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {
     // Add your Google Search Console verification code here when you get it
     // google: 'your-verification-code',
   },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: "da-DK",
+    },
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      url: site.url,
+      logo: `${site.url}/vulkanen-favicon.png`,
+      description: site.description,
+      address: {
+        "@type": "PostalAddress",
+        ...site.address,
+      },
+    },
+  ],
 };
 
 const fraunces = Fraunces({
@@ -90,6 +129,12 @@ export default function RootLayout({
       className={`${fraunces.variable} ${instrument.variable} ${jetbrains.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
         <TRPCReactProvider>
           <Analytics />
           {children}

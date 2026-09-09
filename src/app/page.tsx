@@ -144,7 +144,7 @@ export default function Home() {
           </div>
 
           {/* Photo + AKTUELT card + Vulk */}
-          <div className="relative grid grid-cols-12 gap-6 md:gap-8 items-stretch rise-in lg:max-w-[82%] lg:mx-auto" style={{ animationDelay: "0.4s" }}>
+          <div className="relative grid grid-cols-12 gap-6 md:gap-8 items-stretch rise-in" style={{ animationDelay: "0.4s" }}>
             {/* AKTUELT card - desktop position */}
             <a
               href="#status og nyheder"
@@ -176,42 +176,25 @@ export default function Home() {
 
             {/* Main photo */}
             <div className="col-span-12 lg:col-span-9 relative">
-              <a
-                href="#status og nyheder"
-                onClick={scrollToSection("status og nyheder")}
-                className="group block relative aspect-[277/191] overflow-hidden border border-[var(--rule)] cursor-pointer"
-              >
+              <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden border border-[var(--rule)]">
                 <Image
-                  // Temporary swap for Cykelfestival — revert to bestyrelsen2 after the event:
-                  // src="/billeder/bestyrelsen2.JPG"
-                  // alt="Bestyrelsen foran Vulkanen"
-                  // Note: aspect-[277/191] matches this flyer's native ratio (1662×1146) so it
-                  // isn't cropped. The lg:max-w-[88%] on the row above (instead of a height cap)
-                  // is what makes the whole block a bit smaller — revert both together with
-                  // aspect-[16/10] md:aspect-[16/9] on this box. This link to "status og nyheder"
-                  // is also part of the temporary swap — remove it when reverting to bestyrelsen2.
-                  src="/hop-på-cyklen.jpeg"
-                  alt="Hop på cyklen"
+                  src="/billeder/bestyrelsen2.JPG"
+                  alt="Bestyrelsen foran Vulkanen"
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  style={{ objectPosition: "center" }}
+                  className="object-cover"
+                  style={{ objectPosition: "center 70%" }}
                   priority
                 />
-                {/* Photo caption strip — temporarily removed while the Cykelfestival flyer is
-                    up (the poster already has its own text, so the caption/gradient just
-                    duplicated it). Original text was "Fig. 01 — Bestyrelsen"; restore this
-                    block with that text when reverting to bestyrelsen2:
+                {/* Photo caption strip */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 md:p-6 flex items-end justify-between">
                   <span className="micro-label text-white/80">
                     Fig. 01 — Bestyrelsen
                   </span>
-                  <span className="micro-label text-white/80 hidden sm:flex items-center gap-2">
-                    Læs mere
-                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  <span className="micro-label text-white/80 hidden sm:block">
+                    Ørding, Mors
                   </span>
                 </div>
-                */}
-              </a>
+              </div>
 
               {/* Vulk — bottom right, outside image. pointer-events-none on the wrapper +
                   pointer-events-auto on the two children keeps this badge clickable on its
@@ -345,106 +328,6 @@ export default function Home() {
         numeral="§ 02"
         kicker="Aktuelt"
       >
-        {/* Cykelfestival 2026 — featured event */}
-        <article className="paper-card p-6 sm:p-8 md:p-10 relative">
-          <div className="absolute -top-3 right-6">
-            <span className="inline-flex items-center gap-2 bg-[var(--ember)] text-[var(--ink)] px-3 py-1 micro-label border border-[var(--ink)]">
-              ● Kommende begivenhed
-            </span>
-          </div>
-          <div className="grid grid-cols-12 gap-6 md:gap-10 items-start">
-            {/* Flyer */}
-            <div className="col-span-12 md:col-span-5">
-              <a
-                href="/cykelfestival2026_flyer.png"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block border border-[var(--rule)] overflow-hidden bg-[var(--paper-2)] max-w-[72%] mx-auto"
-              >
-                <Image
-                  src="/cykelfestival2026_flyer.png"
-                  alt="Cykelfestival 2026 — flyer"
-                  width={1024}
-                  height={1536}
-                  className="h-auto w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
-                />
-                <span className="absolute bottom-3 right-3 micro-label bg-[var(--paper)] text-[var(--ink)] px-2 py-1 border border-[var(--ink)] opacity-0 group-hover:opacity-100 transition-opacity">
-                  Se flyer ↗
-                </span>
-              </a>
-            </div>
-
-            {/* Event details */}
-            <div className="col-span-12 md:col-span-7">
-              <Kicker color="var(--ember)">Begivenhed · Cykelfestival 2026</Kicker>
-              <h3
-                className="font-display text-3xl md:text-4xl lg:text-5xl text-[var(--ink)] mb-3 leading-[1.05]"
-                style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 96' }}
-              >
-                Hop på cyklen —{" "}
-                <em className="italic text-[var(--ember-deep)]">uanset alder!</em>
-              </h3>
-              <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-6 max-w-2xl">
-                En dag fyldt med oplevelser, motion og fællesskab på Vulkanen.
-              </p>
-
-              {/* Meta strip: date + location */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                <div className="border border-[var(--rule)] bg-[var(--paper-2)]/40 p-4">
-                  <p className="micro-label text-[var(--ink-4)] mb-1">Dato</p>
-                  <p className="font-display text-lg text-[var(--ink)] leading-tight"
-                     style={{ fontVariationSettings: '"SOFT" 100, "opsz" 48' }}>
-                    Lørdag 5. september 2026
-                  </p>
-                  <p className="text-sm text-[var(--ink-2)]">kl. 10–16</p>
-                </div>
-                <div className="border border-[var(--rule)] bg-[var(--paper-2)]/40 p-4">
-                  <p className="micro-label text-[var(--ink-4)] mb-1">Sted</p>
-                  <p className="font-display text-lg text-[var(--ink)] leading-tight"
-                     style={{ fontVariationSettings: '"SOFT" 100, "opsz" 48' }}>
-                    Vulkanen, Ørding
-                  </p>
-                  <p className="text-sm text-[var(--ink-2)]">Skolesvinget 9, 7990 Ø. Assels</p>
-                </div>
-              </div>
-
-              {/* Activities */}
-              <p className="micro-label text-[var(--ink-3)] mb-3">Aktiviteter</p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6">
-                {[
-                  "Oplevelsestur rundt i lokalområdet",
-                  "Graveltur på grus og stier",
-                  "Skattejagt for de mindste",
-                  "Cykelleg ved Vulkanen",
-                  "Uni-cykelopvisning",
-                  "Tour de cykeldyt med Skrallebang",
-                ].map((a) => (
-                  <li key={a} className="flex items-start gap-2 text-[var(--ink-2)]">
-                    <span className="text-[var(--ember)] mt-1.5 shrink-0">●</span>
-                    <span className="leading-snug">{a}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Footer info */}
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-5 border-t border-[var(--rule)] text-sm">
-                <span className="text-[var(--ink-2)]">
-                  <span className="micro-label text-[var(--ink-4)] mr-2">Entré</span>
-                  Voksne 50 kr · Børn gratis
-                </span>
-                <span className="text-[var(--ink-2)]">
-                  <span className="micro-label text-[var(--ink-4)] mr-2">Mad</span>
-                  Foodtruck Trille
-                </span>
-                <span className="text-[var(--ink-2)]">
-                  <span className="micro-label text-[var(--ink-4)] mr-2">Arrangør</span>
-                  Vulkanen Mors
-                </span>
-              </div>
-            </div>
-          </div>
-        </article>
-
         {/* Nyhedsbrev 2 */}
         <article className="paper-card p-6 sm:p-8 md:p-10 relative">
           <div className="absolute -top-3 right-6">
@@ -557,6 +440,101 @@ export default function Home() {
               : "max-h-0 opacity-0 overflow-hidden"
           }`}
         >
+          {/* Cykelfestival 2026 — past event */}
+          <article className="paper-card p-6 sm:p-8 md:p-10 relative">
+            <div className="absolute -top-3 right-6">
+              <span className="inline-flex items-center gap-2 bg-[var(--paper-2)] text-[var(--ink)] px-3 py-1 micro-label border border-[var(--ink)]">
+                ● Tidligere begivenhed
+              </span>
+            </div>
+            <div className="grid grid-cols-12 gap-6 md:gap-10 items-start">
+              <div className="col-span-12 md:col-span-5">
+                <a
+                  href="/cykelfestival2026_flyer.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block border border-[var(--rule)] overflow-hidden bg-[var(--paper-2)] max-w-[72%] mx-auto"
+                >
+                  <Image
+                    src="/cykelfestival2026_flyer.png"
+                    alt="Cykelfestival 2026 — flyer"
+                    width={1024}
+                    height={1536}
+                    className="h-auto w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                  <span className="absolute bottom-3 right-3 micro-label bg-[var(--paper)] text-[var(--ink)] px-2 py-1 border border-[var(--ink)] opacity-0 group-hover:opacity-100 transition-opacity">
+                    Se flyer ↗
+                  </span>
+                </a>
+              </div>
+
+              <div className="col-span-12 md:col-span-7">
+                <Kicker color="var(--ember)">Arkiv · Cykelfestival 2026</Kicker>
+                <h3
+                  className="font-display text-3xl md:text-4xl lg:text-5xl text-[var(--ink)] mb-3 leading-[1.05]"
+                  style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 96' }}
+                >
+                  Hop på cyklen —{" "}
+                  <em className="italic text-[var(--ember-deep)]">uanset alder!</em>
+                </h3>
+                <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-6 max-w-2xl">
+                  En dag fyldt med oplevelser, motion og fællesskab på Vulkanen.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                  <div className="border border-[var(--rule)] bg-[var(--paper-2)]/40 p-4">
+                    <p className="micro-label text-[var(--ink-4)] mb-1">Dato</p>
+                    <p className="font-display text-lg text-[var(--ink)] leading-tight"
+                       style={{ fontVariationSettings: '"SOFT" 100, "opsz" 48' }}>
+                      Lørdag 5. september 2026
+                    </p>
+                    <p className="text-sm text-[var(--ink-2)]">kl. 10–16</p>
+                  </div>
+                  <div className="border border-[var(--rule)] bg-[var(--paper-2)]/40 p-4">
+                    <p className="micro-label text-[var(--ink-4)] mb-1">Sted</p>
+                    <p className="font-display text-lg text-[var(--ink)] leading-tight"
+                       style={{ fontVariationSettings: '"SOFT" 100, "opsz" 48' }}>
+                      Vulkanen, Ørding
+                    </p>
+                    <p className="text-sm text-[var(--ink-2)]">Skolesvinget 9, 7990 Ø. Assels</p>
+                  </div>
+                </div>
+
+                <p className="micro-label text-[var(--ink-3)] mb-3">Aktiviteter</p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6">
+                  {[
+                    "Oplevelsestur rundt i lokalområdet",
+                    "Graveltur på grus og stier",
+                    "Skattejagt for de mindste",
+                    "Cykelleg ved Vulkanen",
+                    "Uni-cykelopvisning",
+                    "Tour de cykeldyt med Skrallebang",
+                  ].map((a) => (
+                    <li key={a} className="flex items-center gap-2 text-[var(--ink-2)]">
+                      <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ background: "var(--ember)" }} />
+                      <span className="leading-snug">{a}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-5 border-t border-[var(--rule)] text-sm">
+                  <span className="text-[var(--ink-2)]">
+                    <span className="micro-label text-[var(--ink-4)] mr-2">Entré</span>
+                    Voksne 50 kr · Børn gratis
+                  </span>
+                  <span className="text-[var(--ink-2)]">
+                    <span className="micro-label text-[var(--ink-4)] mr-2">Mad</span>
+                    Foodtruck Trille
+                  </span>
+                  <span className="text-[var(--ink-2)]">
+                    <span className="micro-label text-[var(--ink-4)] mr-2">Arrangør</span>
+                    Vulkanen Mors
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <article className="paper-card p-6 sm:p-8 md:p-10">
             <div className="grid grid-cols-12 gap-6 items-start">
               <div className="col-span-12 md:col-span-3">
